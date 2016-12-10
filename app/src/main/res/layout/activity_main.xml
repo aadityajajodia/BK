@@ -90,7 +90,7 @@
         <Button
             android:text="New Button"
             android:id="@+id/button"
-            android:layout_column="110" />
+            android:layout_column="10" />
     </TableRow>
 </TableLayout>
 </RelativeLayout>
