@@ -10,87 +10,274 @@
     tools:context="jajodia.aditya.com.bunkmanager2.MainActivity">
 
 <TableLayout
+    android:id="@+id/table_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TableRow
+        android:id="@+id/tr_one"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/tr_one_et_one"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
+
+    <EditText
+        android:id="@+id/tr_one_et_two"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></EditText>
+
+    <EditText
+        android:id="@+id/tr_one_et_three"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></EditText>
+
+    <EditText
+        android:id="@+id/tr_one_et_four"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></EditText>
+
+    <EditText
+        android:id="@+id/tr_one_et_five"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_one_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_one_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_one_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        android:id="@+id/tr_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <EditText
+            android:id="@+id/tr_two_et_one"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/tr_two_et_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_two_et_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_two_et_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_two_et_five"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_two_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_two_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_two_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+    </TableRow>
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        android:id="@+id/tr_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <EditText
+            android:id="@+id/tr_three_et_one"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/tr_three_et_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_three_et_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_three_et_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_three_et_five"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_three_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_three_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_three_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+    </TableRow>
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        android:id="@+id/tr_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <EditText
+            android:id="@+id/tr_four_et_one"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/tr_four_et_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_four_et_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_four_et_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_four_et_five"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_four_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_four_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_four_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+    </TableRow>
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        android:id="@+id/tr_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <EditText
+            android:id="@+id/tr_five_et_one"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/tr_five_et_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_five_et_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_five_et_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
+        <EditText
+            android:id="@+id/tr_five_et_five"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_five_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_five_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_five_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+    </TableRow>
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        android:id="@+id/tr_six"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        <EditText
+            android:id="@+id/tr_six_et_one"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:inputType="text" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        <EditText
+            android:id="@+id/tr_six_et_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        <EditText
+            android:id="@+id/tr_six_et_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
+        <EditText
+            android:id="@+id/tr_six_et_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_column="10" />
+        <EditText
+            android:id="@+id/tr_six_et_five"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_six_et_six"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_six_et_seven"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+        <EditText
+            android:id="@+id/tr_six_et_eight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
     </TableRow>
 </TableLayout>
+<Button
+    android:text="Done"
+    android:id="@+id/btn_done"
+    android:layout_alignBottom="@id/table_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
 </RelativeLayout>
