@@ -19,7 +19,9 @@ EditText timeTable[][] = new EditText[6][8];
     HashMap<String,Integer> map = new HashMap<>(); // no. of periods of the given subject
     String periods [] [] = new String[6][8]; // actual period
     Button btn;
-    int size;
+    static String subjects="";
+    //MainActivity mainActivity = new MainActivity();
+    static int size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +34,15 @@ EditText timeTable[][] = new EditText[6][8];
                 assignTable();
                 readTable();
                 size = map.size();
+
                 final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("You hav a total of"+" "+size+" "+"subjects");
               //  builder.setCancelable(true);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent i = new Intent(MainActivity.this,TotalInfo.class);
+                        startActivity(i);
                     }
                 });
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -58,6 +62,7 @@ EditText timeTable[][] = new EditText[6][8];
     public void assignTable(){
 
         timeTable[0][0] = (EditText)findViewById(R.id.tr_one_et_one);
+        //timeTable[0][0].setWidth();
         timeTable[0][1] = (EditText)findViewById(R.id.tr_one_et_two);
         timeTable[0][2] = (EditText)findViewById(R.id.tr_one_et_three);
         timeTable[0][3] = (EditText)findViewById(R.id.tr_one_et_four);
@@ -120,17 +125,22 @@ EditText timeTable[][] = new EditText[6][8];
                     map.put(s, ++d);
                 } else if (!s.equals("")) {
                     map.put(s, 1);
-
+                    subjects = subjects+s+"$";
                 }
                 periods[i][j] = s;
             }
         }
     }
 
-  public static int returnsize(){
-        return 0;
-    }
+  public static int getsize(){
 
+        return size ;
+  }
+
+    public static String getSubjects(){
+
+        return subjects;
+    }
     }
 
 
