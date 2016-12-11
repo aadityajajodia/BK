@@ -19,6 +19,7 @@ EditText timeTable[][] = new EditText[6][8];
     HashMap<String,Integer> map = new HashMap<>(); // no. of periods of the given subject
     String periods [] [] = new String[6][8]; // actual period
     Button btn;
+    int size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ EditText timeTable[][] = new EditText[6][8];
             public void onClick(View v) {
                 assignTable();
                 readTable();
-                int size = map.size();
+                size = map.size();
                 final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("You hav a total of"+" "+size+" "+"subjects");
               //  builder.setCancelable(true);
@@ -107,24 +108,29 @@ EditText timeTable[][] = new EditText[6][8];
 
     }
 
-    public void readTable(){
+    public void readTable() {
 
-        for(int i = 0;i<6;i++){
-            for(int j=0;j<8;j++){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 8; j++) {
                 String s = String.valueOf(timeTable[i][j].getText());
-                if(map.containsKey(s)){
+                if (map.containsKey(s)) {
 
                     int d = map.get(s);
                     map.remove(s);
-                    map.put(s,++d);
-                }else if(!s.equals("")){
-                map.put(s,1);
+                    map.put(s, ++d);
+                } else if (!s.equals("")) {
+                    map.put(s, 1);
 
                 }
-            periods[i][j] = s;
+                periods[i][j] = s;
             }
         }
+    }
+
+  public static int returnsize(){
+        return 0;
+    }
 
     }
 
-}
+
