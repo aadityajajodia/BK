@@ -6,16 +6,17 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class TotalInfo extends AppCompatActivity {
 
     private static final String TAG = "TotalInfo";
-
+    RelativeLayout li;
     //   MainActivity ma = new MainActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_total_info);
+        //setContentView(li);
 
         int size = MainActivity.getsize();
         Log.d(TAG,"size"+size);// no. of subjects
@@ -30,16 +31,31 @@ public class TotalInfo extends AppCompatActivity {
                 j=i+1;
             }
         }
-        LinearLayout li = (LinearLayout)findViewById(R.id.activity_total_info);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         Button btn[] = new Button[size];
         for(int i=0;i<size;i++){
             btn[i] = new Button(this);
-            Log.d(TAG,"size :"+size);
+            //Log.d(TAG,"size :"+size);
             btn[i].setText(subjects[i]);
             btn[i].setId(i);
+           /* if(i%3==0&&i>0){
+                Log.d(TAG,"came in loop 1");
+                params.addRule(RelativeLayout.BELOW,btn[i-3].getId());
+            }
+             else if(i>0){
+                Log.d(TAG,"came in loop 2");
+                 params.addRule(RelativeLayout.RIGHT_OF,btn[i-1].getId());
+
+             }*/
+            if(i>0){
+                params.addRule(RelativeLayout.BELOW,btn[i-1].getId());
+            }
             btn[i].setLayoutParams(params);
-            li.addView(btn[i]);
+            li.addView(btn[i],params);
+           setContentView(li);
+
+            //btn[i].setLayoutParams(params);
         }
     }
 }
