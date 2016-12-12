@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
 EditText timeTable[][] = new EditText[6][8];
-    HashMap<String,Integer> map = new HashMap<>(); // no. of periods of the given subject
+    HashMap<String,Integer> map ; // no. of periods of the given subject
     String periods [] [] = new String[6][8]; // actual period
     Button btn;
     static String subjects="";
@@ -31,12 +31,13 @@ EditText timeTable[][] = new EditText[6][8];
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                map = new HashMap<String, Integer>();
                 assignTable();
                 readTable();
                 size = map.size();
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("You hav a total of"+" "+size+" "+"subjects");
+                builder.setTitle("You have a total of"+" "+size+" "+"subjects");
               //  builder.setCancelable(true);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -115,6 +116,7 @@ EditText timeTable[][] = new EditText[6][8];
 
     public void readTable() {
 
+        subjects="";
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
                 String s = String.valueOf(timeTable[i][j].getText());
@@ -123,7 +125,7 @@ EditText timeTable[][] = new EditText[6][8];
                     int d = map.get(s);
                     map.remove(s);
                     map.put(s, ++d);
-                } else if (!s.equals("")) {
+                } else if (!s.isEmpty()) {
                     map.put(s, 1);
                     subjects = subjects+s+"$";
                 }
@@ -138,7 +140,6 @@ EditText timeTable[][] = new EditText[6][8];
   }
 
     public static String getSubjects(){
-
         return subjects;
     }
     }
