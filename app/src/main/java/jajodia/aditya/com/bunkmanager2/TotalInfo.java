@@ -29,13 +29,13 @@ public class TotalInfo extends AppCompatActivity {
         setContentView(R.layout.activity_total_info);
 
         final int size = MainActivity.getsize();
-        Log.d(TAG,"size"+size);// no. of subjects
+      //  Log.d(TAG,"size"+size);// no. of subjects
         String subject = MainActivity.getSubjects(); // subjects as a String separated by $
          subjects = new String[size];
         int l = subject.length();
         int j=0;
         int k=0;
-        Log.d(TAG,subject);
+       // Log.d(TAG,subject);
         for(int i=0;i<l;i++){
             Log.d(TAG,"SEE"+" "+i);
             if(subject.charAt(i)=='$'){
@@ -49,12 +49,12 @@ public class TotalInfo extends AppCompatActivity {
         RelativeLayout.LayoutParams params[] = new RelativeLayout.LayoutParams[size];
         final Button btn[] = new Button[size];
         for(int i=0;i<size;i++){
-            Log.d(TAG,"sss"+" " +i);
+         //   Log.d(TAG,"sss"+" " +i);
             btn[i] = new Button(this);
             btn[i].setId((i+1)*4);
             params[i] = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
             if(i%3==0&&i>0){
-               Log.d(TAG,"came "+" "+i);
+           //    Log.d(TAG,"came "+" "+i);
                 params[i].addRule(RelativeLayout.BELOW,btn[i-3].getId());
 
             }
@@ -79,7 +79,7 @@ public class TotalInfo extends AppCompatActivity {
                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                ButtonFragment fragment = new ButtonFragment();
                fragment.setSubject(subjects[finalI]);
-                Log.d(TAG,"button called"+" "+finalI);
+             //   Log.d(TAG,"button called"+" "+finalI);
                fragmentTransaction.replace(R.id.frame_layout,fragment,null);
                fragmentTransaction.commit();
            }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -35,26 +36,31 @@ EditText timeTable[][] = new EditText[6][8];
                 assignTable();
                 readTable();
                 size = map.size();
+                if (size == 0) {
+                    Toast.makeText(MainActivity.this, "Please enter the subjects", Toast.LENGTH_SHORT).show();
 
-                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("You have a total of"+" "+size+" "+"subjects");
-              //  builder.setCancelable(true);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(MainActivity.this,TotalInfo.class);
-                        startActivity(i);
-                    }
-                });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+                } else {
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("You have a total of" + " " + size + " " + "subjects");
+                    //  builder.setCancelable(true);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(MainActivity.this, TotalInfo.class);
+                            startActivity(i);
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
 
+                        }
+                    });
+                    builder.create();
+                    builder.show();
                 }
-            });
-            builder.create();
-                builder.show();
             }
         });
 
