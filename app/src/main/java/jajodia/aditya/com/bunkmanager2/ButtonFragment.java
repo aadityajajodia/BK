@@ -57,17 +57,18 @@ public class ButtonFragment extends Fragment {
                     int total = Integer.parseInt(String.valueOf(etTotal.getText()));
                     int present = Integer.parseInt(String.valueOf(etPresent.getText()));
 
-                    long t = DatabaseOpenHelper.insertData(getActivity(),subject,total,present);
-                    Log.d(TAG,"value : "+t);
-                }
+                    long t = DatabaseOpenHelper.insertData(getActivity(), subject, total, present);
+                    Log.d(TAG, "value : " + t);
 
-                FragmentManager manager = getFragmentManager();
-                ButtonFragmentTwo bt = new ButtonFragmentTwo();
-                bt.setSubject(subject);
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.frame_layout,bt,null);
-                transaction.commit();
-            }
+
+                    FragmentManager manager = getFragmentManager();
+                    ButtonFragmentTwo bt = new ButtonFragmentTwo();
+                    bt.setSubject(subject);
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.frame_layout, bt, null);
+                    transaction.commit();
+                }
+                }
         });
         return view1;
     }

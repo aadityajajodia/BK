@@ -2,9 +2,11 @@ package jajodia.aditya.com.bunkmanager2;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,17 +18,27 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-EditText timeTable[][] = new EditText[6][8];
+    private static final String TAG = "MainActivity";
+    EditText timeTable[][] = new EditText[6][8];
     HashMap<String,Integer> map ; // no. of periods of the given subject
     String periods [] [] = new String[6][8]; // actual period
     Button btn;
     static String subjects="";
+    public static final String MY_FILE = "TimeTableInput";
     //MainActivity mainActivity = new MainActivity();
     static int size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE,0);
+        boolean b = sharedPreferences.getBoolean("Done",false);
+        if(b){
+            Intent i = new Intent(MainActivity.this,TotalInfo.class);
+            startActivity(i);
+        }
+        //Log.d(TAG,"not working");
 
         btn = (Button)findViewById(R.id.btn_done);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +73,13 @@ EditText timeTable[][] = new EditText[6][8];
                     builder.create();
                     builder.show();
                 }
+
+                SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE,0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("Done",true);
+                editor.putString("Subjects",getSubjects());
+                editor.putInt("Size",size);
+                editor.commit();
             }
         });
 

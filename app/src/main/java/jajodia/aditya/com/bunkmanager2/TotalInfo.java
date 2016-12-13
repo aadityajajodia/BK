@@ -1,5 +1,7 @@
 package jajodia.aditya.com.bunkmanager2;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,16 +26,30 @@ public class TotalInfo extends AppCompatActivity {
     private static final String TAG = "TotalInfo";
     RelativeLayout li;
     String subjects[];
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent in = new Intent(Intent.ACTION_MAIN);
+        in.addCategory(Intent.CATEGORY_HOME);
+        in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(in);
+    }
+
     //   MainActivity ma = new MainActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_info);
 
-        final int size = MainActivity.getsize();
+        //final int size = MainActivity.getsize();
       //  Log.d(TAG,"size"+size);// no. of subjects
-        final String subject = MainActivity.getSubjects(); // subjects as a String separated by $
-         subjects = new String[size];
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.MY_FILE,0);
+        String s = sharedPreferences.getString("Subjects",MainActivity.getSubjects());
+        final String subject = s; // subjects as a String separated by $
+       int  size = sharedPreferences.getInt("Size",MainActivity.size);
+        Log.d(TAG,s+" "+"12"+" "+size);
+        subjects = new String[size];
         int l = subject.length();
         int j=0;
         int k=0;
