@@ -1,5 +1,7 @@
 package jajodia.aditya.com.bunkmanager2;
 
+import android.database.Cursor;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +32,7 @@ public class TotalInfo extends AppCompatActivity {
 
         final int size = MainActivity.getsize();
       //  Log.d(TAG,"size"+size);// no. of subjects
-        String subject = MainActivity.getSubjects(); // subjects as a String separated by $
+        final String subject = MainActivity.getSubjects(); // subjects as a String separated by $
          subjects = new String[size];
         int l = subject.length();
         int j=0;
@@ -75,13 +77,29 @@ public class TotalInfo extends AppCompatActivity {
             btn[i].setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
+               Cursor c = DatabaseOpenHelper.readData(TotalInfo.this,subjects[finalI]);
+
+               c.moveToFirst();
+
                FragmentManager fragmentManager = getSupportFragmentManager();
                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-               ButtonFragment fragment = new ButtonFragment();
-               fragment.setSubject(subjects[finalI]);
-             //   Log.d(TAG,"button called"+" "+finalI);
-               fragmentTransaction.replace(R.id.frame_layout,fragment,null);
-               fragmentTransaction.commit();
+
+               if(c.getCount()<=0) {
+                    Log.d(TAG,"came in 1");
+                   ButtonFragment fragment = new ButtonFragment();
+                   fragment.setSubject(subjects[finalI]);
+                   //   Log.d(TAG,"button called"+" "+finalI);
+                   fragmentTransaction.replace(R.id.frame_layout, fragment, null);
+                   fragmentTransaction.commit();
+               }else{
+                   Log.d(TAG,"came in 2");
+                   ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
+                   fragmentTwo.setSubject(subjects[finalI]);
+                   fragmentTransaction.replace(R.id.frame_layout,fragmentTwo,null);
+                   fragmentTransaction.commit();
+               }
+            c.close();
            }
        });
         }

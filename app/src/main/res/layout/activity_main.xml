@@ -20,6 +20,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+
             android:id="@+id/tr_one_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
