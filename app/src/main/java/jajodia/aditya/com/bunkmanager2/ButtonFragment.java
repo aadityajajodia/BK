@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +61,12 @@ public class ButtonFragment extends Fragment {
                     Log.d(TAG,"value : "+t);
                 }
 
+                FragmentManager manager = getFragmentManager();
+                ButtonFragmentTwo bt = new ButtonFragmentTwo();
+                bt.setSubject(subject);
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.frame_layout,bt,null);
+                transaction.commit();
             }
         });
         return view1;
