@@ -19,15 +19,15 @@
         android:gravity="center"
         android:textSize="60dp"
         android:layout_marginTop="2dp"
-        android:id="@+id/daynametextview" />
+        android:id="@+id/dayname_text_view" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Java"
-        android:id="@+id/subjectnametextview"
+        android:id="@+id/subject_name_text_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@+id/daynametextview"
+        android:layout_below="@id/dayname_text_view"
         android:layout_marginTop="5dp"
         android:textSize="40dp"/>
     <TextView
@@ -36,8 +36,8 @@
         android:text="ATTENDED"
         android:textSize="30dp"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/subjectnametextview"
-        android:id="@+id/attendedtextview"
+        android:layout_below="@id/subject_name_text_view"
+        android:id="@+id/attended_text_view"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -45,8 +45,8 @@
         android:text="NOT ATTENDED"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/attendedtextview"
-        android:id="@+id/notattendedtextview"
+        android:layout_below="@id/attended_text_view"
+        android:id="@+id/not_attended_text_view"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -54,8 +54,8 @@
         android:text="CANCELLED"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/notattendedtextview"
-        android:id="@+id/cancelledtextview"
+        android:layout_below="@id/not_attended_text_view"
+        android:id="@+id/cancelled_text_view"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
         android:text="REPLACED WITH"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/cancelledtextview"
-        android:id="@+id/replacedtextview"
+        android:layout_below="@id/cancelled_text_view"
+        android:id="@+id/replaced_text_view"
         />
     <EditText
         android:layout_width="match_parent"
@@ -72,58 +72,58 @@
         android:textSize="25dp"
         android:textStyle="italic"
         android:hint="Subject Name"
-        android:layout_below="@+id/replacedtextview"
-        android:id="@+id/newsubjectedittext"/>
+        android:layout_below="@id/replaced_text_view"
+        android:id="@+id/new_subjected_it_text"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/subjectnametextview"
+        android:layout_below="@id/subject_name_text_view"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_toRightOf="@id/attendedtextview">
+        android:layout_toRightOf="@id/attended_text_view">
         <RadioButton
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/notattendedtextview"
-            android:layout_toRightOf="@+id/replacedtextview"
-            android:layout_toEndOf="@+id/replacedtextview"
+            android:layout_above="@id/not_attended_text_view"
+            android:layout_toRightOf="@id/replaced_text_view"
+            android:layout_toEndOf="@id/replaced_text_view"
             android:layout_marginLeft="50dp"
             android:id="@+id/attendedradioButton" />
         <RadioButton
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/cancelledtextview"
-            android:layout_toRightOf="@+id/replacedtextview"
+            android:layout_above="@id/cancelled_text_view"
+            android:layout_toRightOf="@id/replaced_text_view"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="25dp"
-            android:layout_toEndOf="@+id/replacedtextview"
+            android:layout_toEndOf="@id/replaced_text_view"
             android:id="@+id/notattendedradioButton" />
 
         <RadioButton
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/replacedtextview"
-            android:layout_toRightOf="@+id/replacedtextview"
+            android:layout_above="@id/replaced_text_view"
+            android:layout_toRightOf="@id/replaced_text_view"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="25dp"
-            android:layout_toEndOf="@+id/replacedtextview"
-            android:id="@+id/cancelledradioButton" />
+            android:layout_toEndOf="@id/replaced_text_view"
+            android:id="@+id/cancelled_radio_Button" />
 
         <RadioButton
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/replacedtextview"
+            android:layout_alignBottom="@id/replaced_text_view"
             android:layout_marginTop="25dp"
-            android:layout_below="@+id/cancelledradioButton"
-            android:layout_toRightOf="@+id/replacedtextview"
+            android:layout_below="@id/cancelled_radio_Button"
+            android:layout_toRightOf="@id/replaced_text_view"
             android:layout_marginLeft="50dp"
-            android:layout_toEndOf="@+id/replacedtextview"
-            android:id="@+id/replacedradioButton" />
+            android:layout_toEndOf="@id/replaced_text_view"
+            android:id="@+id/replaced_radio_Button" />
 
 
     </RadioGroup>
