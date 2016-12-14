@@ -34,9 +34,9 @@ public class ButtonFragmentTwo extends Fragment {
         View view = inflater.inflate(R.layout.button_fragment_two,container,false);
 
         TextView sub = (TextView)view.findViewById(R.id.tv_subject_two);
-        TextView pre = (TextView)view.findViewById(R.id.tv_present_two);
-        TextView tot = (TextView)view.findViewById(R.id.tv_total_two);
-
+        TextView pre = (TextView)view.findViewById(R.id.tv_present_number);
+        TextView tot = (TextView)view.findViewById(R.id.tv_total_number);
+        Log.d(TAG,"came in two");
         sub.setText(subject);
 
         Cursor c = DatabaseOpenHelper.readData(getActivity(),subject);
@@ -45,6 +45,8 @@ public class ButtonFragmentTwo extends Fragment {
         tot.setText(String.valueOf(c.getInt(2)));
         pre.setText(String.valueOf(c.getInt(3)));
         c.close();
+        Log.d(TAG,"came in two");
+
         return view;
     }
 }

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.putInt("Size", size);
                             editor.commit();
 
-                            setAlarm();
+                            setAlarm(13,55,00);
                             Intent i = new Intent(MainActivity.this, TotalInfo.class);
                             startActivity(i);
                         }
@@ -154,8 +154,10 @@ public class MainActivity extends AppCompatActivity {
 
         subjects = "";
         for (int i = 0; i < 6; i++) {
+            String period[] = new String[8];
             for (int j = 0; j < 8; j++) {
                 String s = String.valueOf(timeTable[i][j].getText());
+                period[j] = s;
                 if (map.containsKey(s)) {
 
                     int d = map.get(s);
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 periods[i][j] = s;
             }
+
         }
     }
 
@@ -180,14 +183,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setAlarm() {
+    public void setAlarm(int hr , int min , int sec) {
 
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY,11);
-        calendar.set(Calendar.MINUTE,26);
-        calendar.set(Calendar.SECOND,10);
+        calendar.set(Calendar.HOUR_OF_DAY,hr);
+        calendar.set(Calendar.MINUTE,min);
+        calendar.set(Calendar.SECOND,sec);
         Intent intent4 = new Intent(getApplicationContext(),NotificationReciever.class);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),50,intent4,PendingIntent.FLAG_UPDATE_CURRENT);
