@@ -17,7 +17,9 @@
         android:text="TOTAL"
         android:textSize="40dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+
+        android:elevation="50dp"/>
     <EditText
         android:id="@+id/et_total"
         android:inputType="number"
@@ -50,5 +52,6 @@
         android:layout_marginTop="40dp"
         android:layout_below="@id/tv_present"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
 </RelativeLayout>

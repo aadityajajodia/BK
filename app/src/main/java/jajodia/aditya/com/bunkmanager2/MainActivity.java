@@ -1,5 +1,6 @@
 package jajodia.aditya.com.bunkmanager2;
 
+import android.app.ActivityOptions;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
@@ -8,8 +9,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
@@ -34,8 +37,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_main);
 
+       // getWindow().setEnterTransition(new Explode());
 
         SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE, 0);
         boolean b = sharedPreferences.getBoolean("Done", false);
@@ -73,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
                             editor.commit();
 
                             setAlarm(15,6,00);
+                            getWindow().setExitTransition(new Explode());
                             Intent i = new Intent(MainActivity.this, TotalInfo.class);
-                            startActivity(i);
+                            startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

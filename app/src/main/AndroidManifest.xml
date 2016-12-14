@@ -20,13 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TotalInfo" />
+        <activity android:name=".TotalInfo"
+            android:theme="@style/Theme.AppCompat.DayNight"/>
 
         <receiver
             android:name=".NotificationReciever"
             android:process=":remote"></receiver>
 
-        <activity android:name=".DayInput"></activity>
+        <activity android:name=".DayInput"
+            android:theme="@style/Theme.AppCompat.DayNight"></activity>
     </application>
 
 </manifest>
