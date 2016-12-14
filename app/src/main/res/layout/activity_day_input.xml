@@ -21,15 +21,26 @@
         android:layout_marginTop="2dp"
         android:id="@+id/dayname_text_view" />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Java"
+        android:layout_alignParentRight="true"
         android:id="@+id/subject_name_text_view"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:layout_marginRight="50dp"
+
+        android:textSize="40dp"
+        android:layout_below="@+id/dayname_text_view" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/subject_name_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
         android:layout_below="@id/dayname_text_view"
-        android:layout_marginTop="5dp"
-        android:textSize="40dp"/>
+        android:text="Period"
+        android:textSize="40dp"
+        android:id="@+id/period_text_view"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,4 +138,10 @@
 
 
     </RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_subjected_it_text"
+        android:text="Done"
+        android:textSize="30dp"/>
 </RelativeLayout>
