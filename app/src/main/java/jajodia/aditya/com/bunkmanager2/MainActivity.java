@@ -170,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
                 periods[i][j] = s;
             }
 
+            long t = DatabaseOpenHelperTwo.insertData(MainActivity.this,i+1,period[0],period[1],period[2],period[3],period[4],period[5],period[6],period[7]);
+            Log.d(TAG,"Database Two : "+t);
         }
     }
 
