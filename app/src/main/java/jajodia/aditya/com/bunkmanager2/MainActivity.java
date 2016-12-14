@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.putInt("Size", size);
                             editor.commit();
 
-                            setAlarm(13,55,00);
+                            setAlarm(15,6,00);
                             Intent i = new Intent(MainActivity.this, TotalInfo.class);
                             startActivity(i);
                         }

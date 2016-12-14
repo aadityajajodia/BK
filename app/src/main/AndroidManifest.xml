@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jajodia.aditya.com.bunkmanager2">
 
-<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
@@ -21,10 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TotalInfo"></activity>
-        <receiver android:name=".NotificationReciever"
-            android:process=":remote">
-        </receiver>
+        <activity android:name=".TotalInfo" />
+
+        <receiver
+            android:name=".NotificationReciever"
+            android:process=":remote"></receiver>
+
+        <activity android:name=".DayInput"></activity>
     </application>
 
 </manifest>
