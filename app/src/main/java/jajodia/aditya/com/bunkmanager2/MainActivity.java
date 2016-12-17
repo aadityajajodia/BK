@@ -21,6 +21,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -35,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     static String subjects = "";
     public static final String MY_FILE = "TimeTableInput";
+
     //MainActivity mainActivity = new MainActivity();
     static int size;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                             Intent i = new Intent(MainActivity.this, TotalInfo.class);
-                            startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                            }
                         }
 
 
@@ -181,9 +186,11 @@ public class MainActivity extends AppCompatActivity {
         subjects = "";
 
         for (int i = 0; i < 6; i++) {
+
             for (int j = 0; j < 8; j++) {
                 String s="";
                 if (timeTable[i][j].getText() != null){
+
                     s = String.valueOf(timeTable[i][j].getText());
             }
 
@@ -198,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 periods[i][j] = s;
             }
+
 
            // Log.d(TAG,"Database Two : "+t);
         }

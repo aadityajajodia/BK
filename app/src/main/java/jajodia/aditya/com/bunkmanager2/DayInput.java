@@ -19,6 +19,8 @@ public class DayInput extends AppCompatActivity {
     public static final String FILE="FileTwo";
     TextView dayName , periodName , subjectName;
     Button done;
+    static  int d=0;
+    static String dayofWeek="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,44 +28,8 @@ public class DayInput extends AppCompatActivity {
 
 
         dayName = (TextView)findViewById(R.id.dayname_text_view);
-        //periodName = (TextView)findViewById(R.id.period_text_view);
-        //subjectName = (TextView)findViewById(R.id.subject_name_text_view);
 
-        //one = (Button)findViewById(R.id.btn_notify);
-      Calendar calendar = Calendar.getInstance();
-
-        int date = calendar.get(Calendar.DAY_OF_WEEK);
-
-        int d=0;
-
-        String dayofWeek="";
-        switch(date){
-            case Calendar.MONDAY : d=1;
-                            dayofWeek="MONDAY";
-                            break;
-            case Calendar.TUESDAY : d=2;
-                                    dayofWeek="TUESDAY";
-                            break;
-            case Calendar.WEDNESDAY : d=3;
-                                    dayofWeek="WEDNESDAY";
-                                break;
-            case Calendar.THURSDAY : d=4;
-                                    dayofWeek="THURSDAY";
-                                break;
-            case Calendar.FRIDAY : d=5;
-                                dayofWeek="FRIDAY";
-                            break;
-            case Calendar.SATURDAY : d=6;
-                                dayofWeek="SATURDAY";
-                                break;
-            case Calendar.SUNDAY : d=7;
-                                dayofWeek="SUNDAY";
-                            break;
-        }
-
-           // Cursor cursor = DatabaseOpenHelperTwo.readData(this, d);
-
-            //cursor.moveToFirst();
+        setDate();
 
             dayName.setText(dayofWeek);
 
@@ -88,7 +54,37 @@ public class DayInput extends AppCompatActivity {
                 transaction.commit();
 
         }
+        public static int setDate(){
+            Calendar calendar = Calendar.getInstance();
 
+            int date = calendar.get(Calendar.DAY_OF_WEEK);
+
+
+            switch(date){
+                case Calendar.MONDAY : d=1;
+                    dayofWeek="MONDAY";
+                    break;
+                case Calendar.TUESDAY : d=2;
+                    dayofWeek="TUESDAY";
+                    break;
+                case Calendar.WEDNESDAY : d=3;
+                    dayofWeek="WEDNESDAY";
+                    break;
+                case Calendar.THURSDAY : d=4;
+                    dayofWeek="THURSDAY";
+                    break;
+                case Calendar.FRIDAY : d=5;
+                    dayofWeek="FRIDAY";
+                    break;
+                case Calendar.SATURDAY : d=6;
+                    dayofWeek="SATURDAY";
+                    break;
+                case Calendar.SUNDAY : d=7;
+                    dayofWeek="SUNDAY";
+                    break;
+            }
+        return d;
+        }
 
     }
 
