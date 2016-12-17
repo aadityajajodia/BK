@@ -10,9 +10,9 @@ public class TimeTable extends DbTable {
 
     public interface Columns {
 
-        String ID = "ID";
+        String ID = "_id";
         String DAY = "day";
-        String PERIOD_ONE = "periond_one";
+        String PERIOD_ONE = "period_one";
         String PERIOD_TWO = "period_two";
         String PERIOD_THREE = "period_three";
         String PERIOD_FOUR = "period_four";
@@ -26,7 +26,7 @@ public class TimeTable extends DbTable {
 
     public static final String CREATE_TABLE_CMD = " CREATE TABLE IF NOT EXISTS " + TABLE_NAME
                                                     +LBR
-                                                    +Columns.ID+TYPE_INT_PK+COMMA
+                                                    +Columns.ID+TYPE_INT_PK_AI+COMMA
                                                     +Columns.DAY+TYPE_INT+COMMA
                                                     +Columns.PERIOD_ONE+TYPE_TEXT+COMMA
                                                     +Columns.PERIOD_TWO+TYPE_TEXT+COMMA

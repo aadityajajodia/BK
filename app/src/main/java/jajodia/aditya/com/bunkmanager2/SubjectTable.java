@@ -10,7 +10,7 @@ public class SubjectTable extends DbTable {
 
     public  interface Colums{
 
-        String ID = "ID";
+        String ID = " _id";
         String SUBJECT = "SubjectName";
         String STATUS = " Status";
         String TOTAL = " Total";
@@ -22,7 +22,7 @@ public class SubjectTable extends DbTable {
     public static final String CREATE_TABLE_CMD =
             "CREATE TABLE IF NOT EXISTS "+TABLE_NAME+
                     LBR+
-                    Colums.ID+TYPE_INT_PK+COMMA+
+                    Colums.ID+TYPE_INT_PK_AI+COMMA+
                     Colums.SUBJECT+TYPE_TEXT+COMMA+
                     Colums.STATUS+TYPE_INT+COMMA+
                     Colums.TOTAL+TYPE_INT+COMMA+

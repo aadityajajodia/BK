@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.sax.StartElementListener;
 
 /**
  * Created by kunalsingh on 13/12/16.
@@ -68,5 +69,38 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return  cursor;
     }
 
+    public static  Cursor readAllRows(Context c){
+
+        databaseOpenHelper = new DatabaseOpenHelper(c);
+
+        SQLiteDatabase database = databaseOpenHelper.getReadableDatabase();
+
+        String projection[] = {
+                SubjectTable.Colums.SUBJECT
+        };
+
+        Cursor cursor = database.query(SubjectTable.TABLE_NAME,projection,null,null,null,null,null);
+        return  cursor;
+
+    }
+    public  static void updateData(Context c , String subject,int total , int present){
+
+
+        databaseOpenHelper = new DatabaseOpenHelper(c);
+
+        SQLiteDatabase database = databaseOpenHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(SubjectTable.Colums.TOTAL,total);
+        values.put(SubjectTable.Colums.PRESENT,present);
+
+        String whereClause = SubjectTable.Colums.SUBJECT +" =? ";
+
+        String whereArgs[] = {subject};
+
+        database.update(SubjectTable.TABLE_NAME,values,whereClause,whereArgs);
+
+    }
 
 }

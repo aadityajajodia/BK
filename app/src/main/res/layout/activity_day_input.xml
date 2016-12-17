@@ -20,7 +20,13 @@
         android:textSize="60dp"
         android:layout_marginTop="2dp"
         android:id="@+id/dayname_text_view" />
-    <TextView
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_below="@id/dayname_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></FrameLayout>
+ <!--   <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Java"
@@ -139,9 +145,10 @@
 
     </RadioGroup>
     <Button
+        android:id="@+id/btn_notify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/new_subjected_it_text"
+        android:layout_below="@id/new_subjected_it_text"
         android:text="Done"
-        android:textSize="30dp"/>
-</RelativeLayout>
+        android:textSize="30dp"/>  !-->
+</RelativeLayout >

@@ -78,6 +78,7 @@ public class ButtonFragment extends Fragment {
 
 
 
+
                     FragmentManager manager = getFragmentManager();
                     ButtonFragmentTwo bt = new ButtonFragmentTwo();
                     bt.setSubject(subject);

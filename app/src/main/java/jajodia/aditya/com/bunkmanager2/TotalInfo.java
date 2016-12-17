@@ -25,7 +25,7 @@ public class TotalInfo extends AppCompatActivity {
 
     private static final String TAG = "TotalInfo";
     RelativeLayout li;
-    String subjects[];
+    static String subjects[];
 
     @Override
     public void onBackPressed() {
@@ -140,5 +140,8 @@ public class TotalInfo extends AppCompatActivity {
 
     }
 
+public static String[] getSubjects(){
+    return subjects;
+}
 
 }

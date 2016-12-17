@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.speech.RecognizerIntent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,9 +23,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int SEARCH_REQUEST_CODE = 0;
     private static final String TAG = "MainActivity";
     EditText timeTable[][] = new EditText[6][8];
     HashMap<String, Integer> map; // no. of periods of the given subject
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        // getWindow().setEnterTransition(new Explode());
+
+       // displaySpeechRecognizer();
 
         SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE, 0);
         boolean b = sharedPreferences.getBoolean("Done", false);
@@ -78,11 +84,24 @@ public class MainActivity extends AppCompatActivity {
                             editor.putInt("Size", size);
                             editor.commit();
 
-                            setAlarm(15,6,00);
-                            getWindow().setExitTransition(new Explode());
+                            setAlarm(8,00,00);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                getWindow().setExitTransition(new Explode());
+                            }
+
+
+                            for(int i=0;i<6;i++){
+                                    long t = DatabaseOpenHelperTwo.insertData(MainActivity.this,i+1,periods[i][0],periods[i][1],periods[i][2],periods[i][3],periods[i][4],periods[i][5],periods[i][6],periods[i][7]);
+                                    Log.d(TAG,"Row"+" "+t);
+                                }
+
+
                             Intent i = new Intent(MainActivity.this, TotalInfo.class);
                             startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         }
+
+
+
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
@@ -160,11 +179,14 @@ public class MainActivity extends AppCompatActivity {
     public void readTable() {
 
         subjects = "";
+
         for (int i = 0; i < 6; i++) {
-            String period[] = new String[8];
             for (int j = 0; j < 8; j++) {
-                String s = String.valueOf(timeTable[i][j].getText());
-                period[j] = s;
+                String s="";
+                if (timeTable[i][j].getText() != null){
+                    s = String.valueOf(timeTable[i][j].getText());
+            }
+
                 if (map.containsKey(s)) {
 
                     int d = map.get(s);
@@ -177,8 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 periods[i][j] = s;
             }
 
-            long t = DatabaseOpenHelperTwo.insertData(MainActivity.this,i+1,period[0],period[1],period[2],period[3],period[4],period[5],period[6],period[7]);
-            Log.d(TAG,"Database Two : "+t);
+           // Log.d(TAG,"Database Two : "+t);
         }
     }
 
@@ -207,5 +228,25 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+    }
+
+public  void displaySpeechRecognizer(){
+    Intent intent  =  new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+    startActivityForResult(intent,SEARCH_REQUEST_CODE);
+}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==SEARCH_REQUEST_CODE&&resultCode==RESULT_OK){
+            List<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+            Log.d(TAG,results.get(0));
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

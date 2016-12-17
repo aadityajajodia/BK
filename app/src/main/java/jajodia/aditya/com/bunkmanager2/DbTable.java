@@ -12,6 +12,6 @@ public class DbTable  {
     static String RBR = " ) ";
     static String TYPE_TEXT = " TEXT";
     static String TYPE_INT = " INTEGER";
-    static String TYPE_INT_PK = " INTEGER PRIMARY KEY";
+    static String TYPE_INT_PK_AI = " INTEGER PRIMARY KEY AUTOINCREMENT";
 
 }
