@@ -24,10 +24,12 @@
         </activity>
         <activity
             android:name=".TotalInfo"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <receiver
             android:name=".NotificationReciever"
+
             android:process=":remote" />
 
         <activity
