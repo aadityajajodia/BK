@@ -58,6 +58,7 @@ public class ButtonFragment extends Fragment {
          view1 = inflater.inflate(R.layout.button_fragment,container,false);
         TextView tv = (TextView)view1.findViewById(R.id.tv_subject);
         tv.setText(subject);
+
         Button btn = (Button)view1.findViewById(R.id.btn_sub_done);
         final EditText etTotal = (EditText) view1.findViewById(R.id.et_total);
         final EditText etPresent = (EditText)view1.findViewById(R.id.et_present);

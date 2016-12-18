@@ -19,6 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import org.w3c.dom.Text;
 
 public class TotalInfo extends AppCompatActivity {
@@ -40,7 +44,10 @@ public class TotalInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_Material_Light_DarkActionBar);
         setContentView(R.layout.activity_total_info);
+
+        generateAdd();
 
         //final int size = MainActivity.getsize();
       //  Log.d(TAG,"size"+size);// no. of subjects
@@ -144,4 +151,16 @@ public static String[] getSubjects(){
     return subjects;
 }
 
+
+    public void generateAdd(){
+
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-3940256099942544~3347511713");
+
+        AdView adView = (AdView)findViewById(R.id.ad_view);
+        AdRequest adRequest;
+        adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
 }
+
+
