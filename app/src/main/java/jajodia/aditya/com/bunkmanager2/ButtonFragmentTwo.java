@@ -72,11 +72,15 @@ public class ButtonFragmentTwo extends Fragment {
     }
 
     public void addDataSet(){
+        int per;
+        per=(int)((float)present/total*100);
+
+        int abs=100-per;
 
         ArrayList<PieEntry> entry = new ArrayList<>();
 
-        entry.add(new PieEntry(total-present));
-        entry.add(new PieEntry(present));
+        entry.add(new PieEntry(per));
+        entry.add(new PieEntry(abs));
         PieDataSet pieDataSet = new PieDataSet(entry,"RECORD");
 
         pieDataSet.setValueTextSize(20);
@@ -85,7 +89,7 @@ public class ButtonFragmentTwo extends Fragment {
 
         ArrayList<Integer> colors = new ArrayList<>();
 
-        colors.add(Color.GREEN);
+        colors.add(Color.YELLOW);
         colors.add(Color.BLUE);
 
         pieDataSet.setColors(colors);
