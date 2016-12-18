@@ -12,23 +12,25 @@
 <TextView
     android:id="@+id/tv_subject"
     android:translationZ="20dp"
-    android:elevation="10dp"
+
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="40dp"
+    android:textSize="50dp"
     android:layout_centerHorizontal="true"/>
     <android.support.v7.widget.CardView
         android:layout_below="@id/tv_subject"
-        android:paddingTop="30dp"
+        android:paddingTop="15dp"
         android:id="@+id/card_view_bf"
         xmlns:card_view = "http://schemas.android.com/apk/res-auto"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="50dp"
+
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -41,17 +43,17 @@
 
         <TextView
         android:id="@+id/tv_total"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:text="TOTAL"
         android:textSize="40dp"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:elevation="50dp"/>
+        />
     <EditText
         android:id="@+id/et_total"
         android:inputType="number"
         android:textSize="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@id/tv_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -65,8 +67,8 @@
         android:textSize="40dp"
         android:id="@+id/tv_present"
         android:layout_below="@id/tv_total"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/et_present"
@@ -74,7 +76,7 @@
         android:textSize="40dp"
         android:layout_toRightOf="@id/tv_present"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_present" />
             </LinearLayout>
@@ -86,7 +88,7 @@
         android:text="SUBMIT"
         android:id="@+id/btn_sub_done"
         android:textSize="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/card_view_bf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

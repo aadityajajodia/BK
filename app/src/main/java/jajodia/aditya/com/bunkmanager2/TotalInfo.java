@@ -78,14 +78,14 @@ public class TotalInfo extends AppCompatActivity {
             btn[i] = new Button(this);
             btn[i].setId((i+1)*4);
             params[i] = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-            if(i%3==0&&i>0){
+            if(i%4==0&&i>0){
            //    Log.d(TAG,"came "+" "+i);
-                params[i].addRule(RelativeLayout.BELOW,btn[i-3].getId());
+                params[i].addRule(RelativeLayout.BELOW,btn[i-4].getId());
 
             }
-        else if(i>0&&i>3){
+        else if(i>0&&i>4){
                 params[i].addRule(RelativeLayout.RIGHT_OF,btn[i-1].getId());
-                params[i].addRule(RelativeLayout.BELOW,btn[i-3].getId());
+                params[i].addRule(RelativeLayout.BELOW,btn[i-4].getId());
             }
             else if(i>0){
                 params[i].addRule(RelativeLayout.RIGHT_OF,btn[i-1].getId());
@@ -94,6 +94,7 @@ public class TotalInfo extends AppCompatActivity {
                 params[i].addRule(RelativeLayout.ALIGN_PARENT_LEFT);
             }
             btn[i].setText(subjects[i]);
+            btn[i].setTextSize(9);
             btn[i].setLayoutParams(params[i]);
             li.addView(btn[i],params[i]);
             final int finalI = i;
