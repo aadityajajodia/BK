@@ -154,7 +154,7 @@ public static String[] getSubjects(){
 
     public void generateAdd(){
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-4601836836916539~2310735402");
 
         AdView adView = (AdView)findViewById(R.id.ad_view);
         AdRequest adRequest;
