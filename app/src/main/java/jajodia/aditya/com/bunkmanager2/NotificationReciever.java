@@ -21,41 +21,43 @@ public class NotificationReciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.d(TAG,"onRecieve : "+"received");
+        Log.d(TAG, "onRecieve : " + "received");
 
         int day = DayInput.setDate();
 
-        Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
+        if (day != 7) {
 
-        cursor.moveToFirst();
+            Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
 
-        boolean st = true;
-        for (int i = 1; i <= 8; i++) {
-            if (!cursor.getString(i).isEmpty()) {
-                st = false;
-                break;
+            cursor.moveToFirst();
+
+            boolean st = true;
+            for (int i = 1; i <= 8; i++) {
+                if (!cursor.getString(i).isEmpty()) {
+                    st = false;
+                    break;
+                }
+            }
+            if (!st) {
+                NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                Intent intent1 = new Intent(context, DayInput.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 50, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+                builder.setContentIntent(pendingIntent);
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+                builder.setContentTitle("Time for Attendance");
+                builder.setContentText("click for it");
+
+
+                manager.notify(50, builder.build());
+
             }
         }
-        if (!st) {
-            NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            Intent intent1 = new Intent(context, DayInput.class);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 50, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-            builder.setContentIntent(pendingIntent);
-            builder.setSmallIcon(R.mipmap.ic_launcher);
-            builder.setContentTitle("Time for Attendance");
-            builder.setContentText("click for it");
 
 
-            manager.notify(50, builder.build());
-
-        }
     }
-
-
-
 
 }
