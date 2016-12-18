@@ -44,9 +44,9 @@
         android:layout_marginTop="50dp"
         android:text="TOTAL"
         android:textSize="40dp"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:elevation="50dp"/>
+        android:elevation="25dp"/>
     <EditText
         android:id="@+id/et_total"
         android:inputType="number"
@@ -66,7 +66,7 @@
         android:id="@+id/tv_present"
         android:layout_below="@id/tv_total"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/et_present"
