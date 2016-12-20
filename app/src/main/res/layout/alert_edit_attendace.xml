@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_alert"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_one_alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_total_alert"
+                    android:layout_marginTop="25dp"
+                    android:text="TOTAL"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    />
+                <EditText
+                    android:textColor="@color/colorAccent"
+                    android:id="@+id/et_total_alert"
+                    android:inputType="number"
+                    android:textSize="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@id/tv_total_alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="PRESENT"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"
+                    android:id="@+id/tv_present_alert"
+                    android:layout_below="@id/tv_total_alert"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/et_present_alert"
+                    android:textColor="@color/colorAccent"
+                    android:inputType="number"
+                    android:textSize="15dp"
+                    android:layout_toRightOf="@id/tv_present_alert"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_present_alert" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

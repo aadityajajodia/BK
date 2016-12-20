@@ -24,6 +24,11 @@
         android:id="@+id/share"
         android:title="SHARE"
         android:visible="true"
-        android:showAsAction="never"/>
-
+        android:icon="@color/btn_color"
+        android:showAsAction="never"
+        android:actionProviderClass="android.widget.ShareActionProvider"/>/>
+    <item
+        android:id="@+id/settings"
+        android:title="SETTINGS"
+        android:showAsAction="never"></item>
 </menu>

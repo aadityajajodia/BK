@@ -19,14 +19,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ActionProvider;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -44,10 +48,12 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+
 import org.w3c.dom.Text;
 
 public class TotalInfo extends FragmentActivity {
 
+    private ActionProvider shareActionProvider;
     private static final String TAG = "TotalInfo";
     RelativeLayout li;
     static String subjects[];
@@ -72,6 +78,9 @@ public class TotalInfo extends FragmentActivity {
             },3*1000);
 
         }
+
+
+
     }
 
     @Override
@@ -88,8 +97,12 @@ public class TotalInfo extends FragmentActivity {
 
         inflater.inflate(R.menu.main_menu,menu);
 
+        MenuItem item = menu.findItem(R.id.share);
+        shareActionProvider = item.getActionProvider();
+
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -102,6 +115,13 @@ public class TotalInfo extends FragmentActivity {
             case R.id.item_edit : editAlertDialog();
                                     break;
 
+            case R.id.share : Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                                shareIntent.setType("text/plain");
+                                String shareBody = "Share context";
+                                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Please download the app");
+                                shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                                startActivity(Intent.createChooser(shareIntent,"Share Via"));
+                                break;
             default:
                 Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();
                 break;
@@ -307,6 +327,18 @@ public static String[] getSubjects(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        builder.setCancelable(false);
+
+        builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if(keyCode==KeyEvent.KEYCODE_BACK)
+                    dialog.cancel();
+
+                return true;
+            }
+        });
         String [] edit = {"Edit Attendance","Edit TimeTable"};
 
         builder.setItems(edit, new DialogInterface.OnClickListener() {
@@ -315,8 +347,8 @@ public static String[] getSubjects(){
 
                     switch (which){
 
-                        case 0 :
-                            Toast.makeText(TotalInfo.this, "You clicked for attendace", Toast.LENGTH_SHORT).show();
+                        case 0 :editAttendanceDialog();
+                           // Toast.makeText(TotalInfo.this, "You clicked for attendace", Toast.LENGTH_SHORT).show();
                             break;
                         case 1 :
                             Toast.makeText(TotalInfo.this, "You clicked for timetable", Toast.LENGTH_SHORT).show();
@@ -334,6 +366,113 @@ public static String[] getSubjects(){
 
     }
 
+    public void editAttendanceDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setCancelable(false);
+
+        builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if(keyCode==KeyEvent.KEYCODE_BACK)
+                    dialog.cancel();
+
+                return true;
+            }
+        });
+        builder.setTitle("Subjects");
+        builder.setItems(subjects, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                        editTotalPresentDialog(which);
+
+
+            }
+        });
+
+        builder.create();
+        builder.show();
+
+    }
+
+    public void editTotalPresentDialog(final int sub){
+
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        View view = inflater.inflate(R.layout.alert_edit_attendace,null);
+        builder.setCancelable(false);
+        builder.setTitle(subjects[sub]);
+
+        builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if(keyCode==KeyEvent.KEYCODE_BACK)
+                    dialog.cancel();
+
+                return true;
+            }
+        });
+        builder.setView(view);
+
+        final EditText et_t = (EditText)view.findViewById(R.id.et_total_alert);
+        final EditText et_p = (EditText)view.findViewById(R.id.et_present_alert);
+
+        final Cursor c = DatabaseOpenHelper.readData(TotalInfo.this,subjects[sub]);
+        c.moveToFirst();
+        if(c.getCount()>0) {
+            et_t.setHint(String.valueOf(c.getInt(2)));
+            et_p.setHint(String.valueOf(c.getInt(3)));
+
+           // et_t.setHintTextColor(Color.parseColor("#000080"));
+            //et_p.setHintTextColor(Color.parseColor("#000080"));
+        }else {
+            et_t.setHint("0");
+            et_p.setHint("0");
+        }
+            builder.setPositiveButton("DONE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(et_p.getText().toString().isEmpty()||et_t.getText().toString().isEmpty())
+                    Toast.makeText(TotalInfo.this, "Please enter new total and present ", Toast.LENGTH_SHORT).show();
+                else {
+                    int t = Integer.parseInt((et_t.getText().toString()));
+                    int p = Integer.parseInt((et_p.getText().toString()));
+
+                    Log.d(TAG,"check"+ " "+t+" "+p);
+                    if(p>t){
+                        Toast.makeText(TotalInfo.this, "Present cannot be greater than Total", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        if(c.getCount()<=0){
+                            DatabaseOpenHelper.insertData(TotalInfo.this,subjects[sub],t,p);
+                        }else
+                          DatabaseOpenHelper.updateData(TotalInfo.this, subjects[sub], t,p);
+
+                    }
+                }
+            }
+        });
+
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        builder.create();
+        builder.show();
+    }
 }
 
 

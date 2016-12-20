@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -48,6 +49,7 @@ public class ButtonFragmentTwo extends Fragment {
         TextView sub = (TextView)view.findViewById(R.id.tv_subject_two);
         TextView pre = (TextView)view.findViewById(R.id.tv_present_number);
         TextView tot = (TextView)view.findViewById(R.id.tv_total_number);
+        RelativeLayout layout = (RelativeLayout)view.findViewById(R.id.button_fragment);
         Log.d(TAG,"came in two");
         sub.setText(subject);
 
@@ -56,6 +58,9 @@ public class ButtonFragmentTwo extends Fragment {
         pieChart.setRotationEnabled(true);
 
         pieChart.setHoleRadius(0);
+
+
+
         Cursor c = DatabaseOpenHelper.readData(getActivity(),subject);
         c.moveToFirst();
         Log.d(TAG,"s"+"  " +c.getColumnName(0)+" "+c.getColumnName(1)+" "+c.getColumnName(2)+" "+c.getColumnName(3));

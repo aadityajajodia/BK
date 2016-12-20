@@ -8,7 +8,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorButtonNormal">@color/button</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionMenuTextColor">@color/color_chech_two</item>
+       <!-- <item name="android:actionMenuTextColor">@color/color_chech_two</item>!-->
         <item name="android:popupTheme">@style/ThemeOne</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@transition/explode</item>
