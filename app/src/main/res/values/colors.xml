@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#536DFE</color>
     <color name="white">#FFFFFFFF</color>
     <color name="btn_color">#FF5722</color>
     <color name="primary_material_light_1">#03a9f4</color>
@@ -15,4 +15,6 @@
     <color name="primary_light">#9c27b0</color>
     <color name="secondary_text_material_light">#212121</color>
     <color name="color_foreground">#ffffff</color>
+    <color name="color_check">#DAA520</color>
+    <color name="color_chech_two">#000080</color>
 </resources>

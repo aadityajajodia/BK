@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:textColor="@color/primary_light"
+        android:textColor="@color/color_chech_two"
         android:elevation="10dp"
         android:translationZ="20dp"
     android:id="@+id/tv_subject_two"

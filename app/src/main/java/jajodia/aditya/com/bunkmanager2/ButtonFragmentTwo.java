@@ -90,8 +90,8 @@ public class ButtonFragmentTwo extends Fragment {
 
         ArrayList<Integer> colors = new ArrayList<>();
 
-        colors.add(Color.GREEN);
-        colors.add(Color.RED);
+        colors.add(Color.parseColor("#006600"));
+        colors.add(Color.parseColor("#CC0000"));
 
         pieDataSet.setColors(colors);
         pieDataSet.setSliceSpace(5);
