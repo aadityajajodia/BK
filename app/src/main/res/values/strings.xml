@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BunkManager2</string>
     <string name="banner_ad_unit_id">ca-app-pub-4601836836916539/8217668200</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

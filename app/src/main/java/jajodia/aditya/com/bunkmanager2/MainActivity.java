@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -43,89 +44,94 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // getWindow().setEnterTransition(new Explode());
-
-       // displaySpeechRecognizer();
-
         SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE, 0);
-        boolean b = sharedPreferences.getBoolean("Done", false);
-        if (b) {
-            Intent i = new Intent(MainActivity.this, TotalInfo.class);
-            startActivity(i);
-        }
-        //Log.d(TAG,"not working");
 
-        btn = (Button) findViewById(R.id.btn_done);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                map = new HashMap<String, Integer>();
-                assignTable();
-                readTable();
-                size = map.size();
-                if (size == 0) {
-                    Toast.makeText(MainActivity.this, "Please enter the subjects", Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("You have a total of" + " " + size + " " + "subjects");
-                    //  builder.setCancelable(true);
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d(TAG, "coming hone");
-                            SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE, 0);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("Done", true);
-                            editor.putString("Subjects", getSubjects());
-                            editor.putInt("Size", size);
-                            editor.commit();
-
-                            setAlarm(8,00,00);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                getWindow().setExitTransition(new Explode());
-                            }
+            setTheme(R.style.ThemeOne);
 
 
-                            for(int i=0;i<6;i++){
-                                    long t = DatabaseOpenHelperTwo.insertData(MainActivity.this,i+1,periods[i][0],periods[i][1],periods[i][2],periods[i][3],periods[i][4],periods[i][5],periods[i][6],periods[i][7]);
-                                    Log.d(TAG,"Row"+" "+t);
+            // getWindow().setEnterTransition(new Explode());
+
+            // displaySpeechRecognizer();
+
+
+            //Log.d(TAG,"not working");
+
+            btn = (Button) findViewById(R.id.btn_done);
+
+            // btn.setBackgroundColor(getResources().getColor(R.color.btn_color));
+
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    map = new HashMap<String, Integer>();
+                    assignTable();
+                    readTable();
+                    size = map.size();
+                    if (size == 0) {
+                        Toast.makeText(MainActivity.this, "Please enter the subjects", Toast.LENGTH_SHORT).show();
+
+                    } else {
+
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("You have a total of" + " " + size + " " + "subjects");
+                        //  builder.setCancelable(true);
+
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+
+                                Log.d(TAG, "coming hone");
+                                SharedPreferences sharedPreferences = getSharedPreferences(MY_FILE, 0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("Done", true);
+                                editor.putString("Subjects", getSubjects());
+                                editor.putInt("Size", size);
+                                editor.commit();
+
+                                setAlarm(8, 00, 00);
+
+
+                                for (int i = 0; i < 6; i++) {
+                                    long t = DatabaseOpenHelperTwo.insertData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
+                                    Log.d(TAG, "Row" + " " + t);
                                 }
+                                Intent in= new Intent(MainActivity.this, TotalInfo.class);
+                                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                in.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(in);
 
-
-                            Intent i = new Intent(MainActivity.this, TotalInfo.class);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                             }
-                        }
 
 
+                        });
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.create();
+                        builder.show();
 
 
-                        }
-                    });
-                    builder.create();
-                    builder.show();
+                    }
 
 
                 }
+            });
 
+        }
 
-            }
-        });
-
-    }
 
     public void assignTable() {
 
@@ -181,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void readTable() {
 
         subjects = "";
@@ -191,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 String s="";
                 if (timeTable[i][j].getText() != null){
 
-                    s = String.valueOf(timeTable[i][j].getText());
+                    s = String.valueOf(timeTable[i][j].getText()).toUpperCase();
             }
 
                 if (map.containsKey(s)) {

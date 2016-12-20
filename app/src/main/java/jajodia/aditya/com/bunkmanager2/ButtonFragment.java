@@ -9,6 +9,7 @@ import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class ButtonFragment extends Fragment {
 
     private static final String TAG ="ButtonFragment" ;
     View view1;
+    CardView cardView;
     public ButtonFragment() {
 
     }
@@ -58,6 +60,8 @@ public class ButtonFragment extends Fragment {
          view1 = inflater.inflate(R.layout.button_fragment,container,false);
         TextView tv = (TextView)view1.findViewById(R.id.tv_subject);
         tv.setText(subject);
+
+        cardView = (CardView)view1.findViewById(R.id.card_view_bf);
 
         Button btn = (Button)view1.findViewById(R.id.btn_sub_done);
         final EditText etTotal = (EditText) view1.findViewById(R.id.et_total);

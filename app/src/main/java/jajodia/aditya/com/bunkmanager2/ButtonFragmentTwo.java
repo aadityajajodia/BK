@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -85,12 +86,12 @@ public class ButtonFragmentTwo extends Fragment {
 
         pieDataSet.setValueTextSize(20);
 
-        pieDataSet.setValueTextColor(Color.RED);
+        pieDataSet.setValueTextColor(Color.WHITE);
 
         ArrayList<Integer> colors = new ArrayList<>();
 
-        colors.add(Color.YELLOW);
-        colors.add(Color.BLUE);
+        colors.add(Color.GREEN);
+        colors.add(Color.RED);
 
         pieDataSet.setColors(colors);
         pieDataSet.setSliceSpace(5);
@@ -98,7 +99,10 @@ public class ButtonFragmentTwo extends Fragment {
         PieData pieData = new PieData(pieDataSet);
 
         pieChart.setData(pieData);
-
+        pieChart.setContentDescription("good");
+        pieChart.setDrawHoleEnabled(false);
+        Legend legend = pieChart.getLegend();
+        legend.setEnabled(false);
         pieChart.invalidate();
     }
 }

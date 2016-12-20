@@ -9,11 +9,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/AppTheme"
     android:layout_alignParentTop="true"
 
     android:gravity="center_horizontal"
-    tools:context="jajodia.aditya.com.bunkmanager2.TotalInfo"
-    >
+    tools:context="jajodia.aditya.com.bunkmanager2.TotalInfo">
+
 
     <FrameLayout
         android:id="@+id/frame_layout"
