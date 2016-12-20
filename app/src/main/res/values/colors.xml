@@ -17,4 +17,5 @@
     <color name="color_foreground">#ffffff</color>
     <color name="color_check">#DAA520</color>
     <color name="color_chech_two">#000080</color>
+    <color name="button">#C0C0C0</color>
 </resources>

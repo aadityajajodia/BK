@@ -6,9 +6,10 @@
         <item name="android:windowNoTitle">false</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorButtonNormal">@color/button</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionMenuTextColor">@color/color_chech_two</item>
-
+        <item name="android:popupTheme">@style/ThemeOne</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@transition/explode</item>
         <item name="android:windowExitTransition">@transition/explode</item>
@@ -27,12 +28,25 @@
         <item name="android:colorAccent">@color/accent_material_dark</item>
         <item name="android:colorBackground">@color/background_material_dark</item>
         <item name="android:navigationBarColor">@color/primary_light</item>
-        <item name="android:textColorPrimary">@color/primary_text_material_dark</item>
+        <item name="android:textColorPrimary">@color/color_chech_two</item>
         <item name="android:colorForeground">@color/foreground_material_dark</item>
         <item name="android:textColorSecondary">@color/secondary_text_material_dark</item>
         <item name="android:textColorSecondaryInverse">@color/secondary_text_material_light</item>
         <item name="android:textColorTertiary">@color/secondary_text_material_dark</item>
         <item name="android:windowBackground">@color/color_foreground</item>
+    </style>
+    <style name="ButtonOne" parent="Theme.AppCompat.NoActionBar" >
+        <item name="android:colorPrimaryDark">@color/primary_dark_material_dark</item>
+        <item name="android:colorPrimary">@color/primary_material_dark</item>
+        <item name="android:colorAccent">@color/accent_material_dark</item>
+        <item name="android:colorBackground">@color/button</item>
+        <item name="android:navigationBarColor">@color/primary_light</item>
+        <item name="android:textColorPrimary">@color/color_chech_two</item>
+        <item name="android:colorForeground">@color/button</item>
+        <item name="android:textColorSecondary">@color/secondary_text_material_dark</item>
+        <item name="android:textColorSecondaryInverse">@color/secondary_text_material_light</item>
+        <item name="android:textColorTertiary">@color/secondary_text_material_dark</item>
+        <item name="android:windowBackground">@color/button</item>
     </style>
 
 </resources>

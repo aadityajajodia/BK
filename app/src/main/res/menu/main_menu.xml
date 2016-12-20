@@ -24,6 +24,6 @@
         android:id="@+id/share"
         android:title="SHARE"
         android:visible="true"
-        android:showAsAction="always"/>
+        android:showAsAction="never"/>
 
 </menu>
