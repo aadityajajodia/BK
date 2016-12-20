@@ -95,7 +95,17 @@ public class TotalInfo extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
+        int id = item.getItemId();
 
+        switch(id) {
+
+            case R.id.item_edit : editAlertDialog();
+                                    break;
+
+            default:
+                Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -291,6 +301,38 @@ public static String[] getSubjects(){
 
     }
 
+
+    public void editAlertDialog(){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        String [] edit = {"Edit Attendance","Edit TimeTable"};
+
+        builder.setItems(edit, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                    switch (which){
+
+                        case 0 :
+                            Toast.makeText(TotalInfo.this, "You clicked for attendace", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1 :
+                            Toast.makeText(TotalInfo.this, "You clicked for timetable", Toast.LENGTH_SHORT).show();
+                            break;
+                    default:
+                        Toast.makeText(TotalInfo.this, "Nothing selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+
+            }
+        });
+
+        builder.create();
+        builder.show();
+
+    }
 
 }
 

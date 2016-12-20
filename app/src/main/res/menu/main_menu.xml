@@ -8,10 +8,22 @@
         android:title="EDIT"
         android:visible="true"
         android:showAsAction="always"
+
         />
     <item
         android:id="@+id/item_about"
         android:title="ABOUT US"
-        app:showAsAction="always" />
+        android:visible="true"
+        android:showAsAction="withText" />
+    <item
+        android:id="@+id/contact_us"
+        android:visible="true"
+        android:title="CONTACT US"
+        android:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/share"
+        android:title="SHARE"
+        android:visible="true"
+        android:showAsAction="always"/>
 
 </menu>
