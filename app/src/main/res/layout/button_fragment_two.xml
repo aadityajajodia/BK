@@ -15,7 +15,7 @@
     />
 
     <TextView
-        android:textColor="@color/colorAccent"
+        android:textColor="#44050505"
         android:layout_marginTop="50dp"
         android:id="@+id/tv_total_two"
         android:text="TOTAL"
@@ -24,28 +24,32 @@
         android:layout_height="wrap_content" />
     <TextView
         android:textColor="@color/colorAccent"
-        android:text="PRESENT"
-        android:id="@+id/tv_present_two"
-        android:textSize="20dp"
-        android:layout_below="@id/tv_total_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="@color/colorAccent"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@id/tv_total_two"
         android:textSize="20dp"
         android:id="@+id/tv_total_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#44050505"
+        android:text="PRESENT"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/tv_total_number"
+        android:id="@+id/tv_present_two"
+        android:textSize="20dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
     <TextView
         android:textColor="@color/colorAccent"
         android:id="@+id/tv_present_number"
-        android:layout_below="@id/tv_total_two"
+        android:layout_marginTop="50dp"
         android:textSize="20dp"
-        android:layout_marginStart="135dp"
+        android:layout_marginStart="30dp"
         android:layout_toRightOf="@id/tv_present_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
