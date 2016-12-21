@@ -1,5 +1,6 @@
 package jajodia.aditya.com.bunkmanager2;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +38,19 @@ public class ButtonFragmentTwo extends Fragment {
     }
     String subject;
     int total,present;
+    View view;
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        int cx = view.getWidth()/2;
+        int cy = view.getHeight()/2;
+
+        float finalRadius = (float) Math.hypot(cx,cy);
+
+        final Animator animator = ViewAnimationUtils.createCircularReveal(view,cx,cy,0,finalRadius);
+        animator.start();
+    }
 
     public void setSubject(String subject){
         this.subject = subject;
@@ -44,7 +59,7 @@ public class ButtonFragmentTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.button_fragment_two,container,false);
+        view = inflater.inflate(R.layout.button_fragment_two,container,false);
 
         TextView sub = (TextView)view.findViewById(R.id.tv_subject_two);
         TextView pre = (TextView)view.findViewById(R.id.tv_present_number);

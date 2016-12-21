@@ -38,7 +38,12 @@
         <activity
             android:name=".DayInput"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight" />
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ContactUsActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

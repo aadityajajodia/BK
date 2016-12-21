@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     public static final int SEARCH_REQUEST_CODE = 0;
     private static final String TAG = "MainActivity";
@@ -40,7 +42,28 @@ public class MainActivity extends AppCompatActivity {
 
     //MainActivity mainActivity = new MainActivity();
     static int size;
+boolean exit = false;
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
 
+        if(exit){
+            finish();
+        }else{
+
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+            exit = true;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            },3*1000);
+
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
             setTheme(R.style.ThemeOne);
 
+        infoAlertDialog();
 
             // getWindow().setEnterTransition(new Explode());
 
@@ -264,4 +288,28 @@ public  void displaySpeechRecognizer(){
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+    public void infoAlertDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setTitle("Please fill the time table");
+
+        builder.setMessage("Leave blank the periods and days you have no class");
+
+        builder.setCancelable(true);
+
+        builder.create();
+
+        builder.show();
+    }
+
 }

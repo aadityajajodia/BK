@@ -85,7 +85,7 @@ public class TotalInfo extends FragmentActivity {
 
     @Override
     protected void onResume() {
-        invalidateOptionsMenu();
+      //  invalidateOptionsMenu();
         super.onResume();
     }
 
@@ -122,6 +122,16 @@ public class TotalInfo extends FragmentActivity {
                                 shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
                                 startActivity(Intent.createChooser(shareIntent,"Share Via"));
                                 break;
+
+            case R.id.item_about : Intent intent = new Intent(this,AboutUsActivity.class);
+                                                  //  overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                                                    startActivity(intent);
+                                                    break;
+
+            case R.id.contact_us : Intent intent1 = new Intent(this,ContactUsActivity.class);
+                                    startActivity(intent1);
+                                    break;
+
             default:
                 Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();
                 break;
@@ -144,6 +154,9 @@ public class TotalInfo extends FragmentActivity {
         Cursor cursor = DatabaseOpenHelperTwo.readData(this,2);
         if(cursor.getCount()<=0){
             Intent i = new Intent(this,MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(i);
         }else {
 
