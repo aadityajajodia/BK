@@ -235,6 +235,8 @@ boolean exit = false;
                     subjects = subjects + s + "$";
                 }
                 periods[i][j] = s;
+
+            DatabaseOpenHelperThree.insertData(this,i+1,0,0,0,0,0,0,0,0);
             }
 
 

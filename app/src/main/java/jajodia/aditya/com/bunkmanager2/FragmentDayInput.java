@@ -67,13 +67,11 @@ public class FragmentDayInput extends Fragment {
 
         cursor.moveToFirst();
         if (period > 8) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getActivity().getWindow().setExitTransition(new Explode());
-            }
-            Intent i = new Intent(getActivity(), TotalInfo.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
-            }
+           Intent i = new Intent(getActivity(),TotalInfo.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            NotificationReciever.makeNotifiaction(getActivity(),day);
         } else {
             TextView tv_period = (TextView) view.findViewById(R.id.tv_period);
             tv_period.setText("Period" + " " + period);
@@ -82,7 +80,14 @@ public class FragmentDayInput extends Fragment {
             final FragmentTransaction transaction = manager.beginTransaction();
             final FragmentDayInput fragmentDayInput = new FragmentDayInput();
             subject = cursor.getString(period);
-            if (subject.isEmpty()) {
+            Cursor cursor2 = DatabaseOpenHelperThree.readData(getActivity(),day);
+            cursor2.moveToFirst();
+            final int periods[] = new int[9];
+            for(int i=0;i<8;i++) {
+                periods[i] = cursor2.getInt(i);
+            Log.d(TAG,"ccc"+" "+cursor2.getInt(i));
+            }
+                if (subject.isEmpty()||periods[period-1]==1) {
                 fragmentDayInput.setPeriod(period + 1);
                 transaction.replace(R.id.frame_container, fragmentDayInput, null);
                 transaction.commit();
@@ -143,7 +148,9 @@ public class FragmentDayInput extends Fragment {
                 @Override
                 public void onClick(View v) {
 
-
+                    periods[period-1] = 1;
+                    DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
+                    NotificationReciever.makeNotifiaction(getActivity(),day);
                     switch (rbint) {
 
                         case 0:
@@ -170,12 +177,15 @@ public class FragmentDayInput extends Fragment {
 
                             Cursor c = DatabaseOpenHelper.readData(getActivity(),subjectReplaced);
                             c.moveToFirst();
+                            if(c.getCount()<=0){
 
-                            int t = c.getInt(2);
-                            int p = c.getInt(3);
+                                DatabaseOpenHelper.insertData(getActivity(),subjectReplaced,1,1);
+                            }else {
+                                int t = c.getInt(2);
+                                int p = c.getInt(3);
 
-                            DatabaseOpenHelper.updateData(getActivity(),subjectReplaced,t+1,p+1);
-
+                                DatabaseOpenHelper.updateData(getActivity(), subjectReplaced, t + 1, p + 1);
+                            }
                             break;
 
                     }

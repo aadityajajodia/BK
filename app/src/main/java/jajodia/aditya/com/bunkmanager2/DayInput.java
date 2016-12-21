@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,7 +34,7 @@ public class DayInput extends FragmentActivity {
         setContentView(R.layout.activity_day_input);
 
 
-
+        generateAdd();
         dayName = (TextView)findViewById(R.id.dayname_text_view);
 
         setDate();
@@ -56,6 +60,8 @@ public class DayInput extends FragmentActivity {
                 fragmentDayInput.setPeriod(1);
                 transaction.replace(R.id.frame_container, fragmentDayInput, null);
                 transaction.commit();
+
+
 
         }
         public static int setDate(){
@@ -89,6 +95,16 @@ public class DayInput extends FragmentActivity {
             }
         return d;
         }
+
+
+    public void generateAdd(){
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-4601836836916539~2310735402");
+
+        AdView adView = (AdView)findViewById(R.id.ad_view_two);
+        AdRequest adRequest;
+        adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
 
     }
 

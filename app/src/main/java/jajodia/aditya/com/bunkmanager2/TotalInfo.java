@@ -1,6 +1,8 @@
 package jajodia.aditya.com.bunkmanager2;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,7 +55,7 @@ import org.w3c.dom.Text;
 
 public class TotalInfo extends FragmentActivity {
 
-    private ActionProvider shareActionProvider;
+
     private static final String TAG = "TotalInfo";
     RelativeLayout li;
     static String subjects[];
@@ -98,7 +100,7 @@ public class TotalInfo extends FragmentActivity {
         inflater.inflate(R.menu.main_menu,menu);
 
         MenuItem item = menu.findItem(R.id.share);
-        shareActionProvider = item.getActionProvider();
+        ActionProvider shareActionProvider = item.getActionProvider();
 
         return true;
     }
@@ -146,7 +148,15 @@ public class TotalInfo extends FragmentActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_total_info);
 
-       //     ActionBar actionBar = getSupportActionBar();
+        Intent in = getIntent();
+        boolean bol = in.getBooleanExtra("STATUS",false);
+        if(bol) {
+            Log.d(TAG,"came to exit notification");
+            NotificationManager manager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.cancel(50);
+
+        }
+            //     ActionBar actionBar = getSupportActionBar();
 
 
 
