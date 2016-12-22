@@ -52,26 +52,12 @@ public class MainActivity extends FragmentActivity {
 
     //MainActivity mainActivity = new MainActivity();
     static int size;
-boolean exit = false;
+//boolean exit = false;
     @Override
     public void onBackPressed() {
        // super.onBackPressed();
 
-        if(exit){
-            finish();
-        }else{
-
-            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
-            exit = true;
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    exit = false;
-                }
-            },3*1000);
-
-        }
+        finish();
 
     }
 

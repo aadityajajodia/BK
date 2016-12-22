@@ -262,6 +262,7 @@ public class TotalInfo extends FragmentActivity {
                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                                 if (c.getCount() <= 0) {
+                                    btn[finalI].setTextColor(Color.WHITE);
                                     Log.d(TAG, "came in 1");
                                     ButtonFragment fragment = new ButtonFragment();
                                     fragment.setSubject(subjects[finalI]);
@@ -272,7 +273,9 @@ public class TotalInfo extends FragmentActivity {
                                     boolean b = percentattendance(subjects[finalI]);
                                     if (b)
                                         btn[finalI].setTextColor(Color.parseColor("#FF5722"));
-
+                                        else{
+                                        btn[finalI].setTextColor(Color.WHITE);
+                                    }
                                     Log.d(TAG, "came in 2");
                                     ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
                                     fragmentTwo.setSubject(subjects[finalI]);
@@ -472,18 +475,29 @@ public static String[] getSubjects(){
                 else {
                     int t = Integer.parseInt((et_t.getText().toString()));
                     int p = Integer.parseInt((et_p.getText().toString()));
+                    if(t==0)
+                        Toast.makeText(TotalInfo.this, "Please Enter Total", Toast.LENGTH_SHORT).show();
+                    else {
+                        Log.d(TAG, "check" + " " + t + " " + p);
+                        if (p > t) {
+                            Toast.makeText(TotalInfo.this, "Present cannot be greater than Total", Toast.LENGTH_SHORT).show();
+                        } else {
 
-                    Log.d(TAG,"check"+ " "+t+" "+p);
-                    if(p>t){
-                        Toast.makeText(TotalInfo.this, "Present cannot be greater than Total", Toast.LENGTH_SHORT).show();
-                    }else {
+                            if (c.getCount() <= 0) {
+                                DatabaseOpenHelper.insertData(TotalInfo.this, subjects[sub], t, p);
+                            } else
+                                DatabaseOpenHelper.updateData(TotalInfo.this, subjects[sub], t, p);
 
-                        if(c.getCount()<=0){
-                            DatabaseOpenHelper.insertData(TotalInfo.this,subjects[sub],t,p);
-                        }else
-                          DatabaseOpenHelper.updateData(TotalInfo.this, subjects[sub], t,p);
+                        }
 
+                        FragmentManager manager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                        ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
+                        fragmentTwo.setSubject(subjects[sub]);
+                        fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
+                        fragmentTransaction.commit();
                     }
+
                 }
             }
         });
