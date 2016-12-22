@@ -15,5 +15,8 @@ public class ContactUsActivity extends Activity {
         android.app.ActionBar actionBar = getActionBar();
 
         actionBar.setTitle("CONTACT US");
+
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

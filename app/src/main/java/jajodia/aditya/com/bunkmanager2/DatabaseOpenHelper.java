@@ -101,6 +101,21 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
         database.update(SubjectTable.TABLE_NAME,values,whereClause,whereArgs);
 
+
     }
 
+    public static long deleteRow(Context c , String sub){
+
+        databaseOpenHelper = new DatabaseOpenHelper(c);
+
+        SQLiteDatabase database = databaseOpenHelper.getWritableDatabase();
+
+        String whereClause = SubjectTable.Colums.SUBJECT+" =?";
+        String whereArgs[] = {sub};
+
+        long t = database.delete(SubjectTable.TABLE_NAME,whereClause,whereArgs);
+
+        return t;
+
+    }
 }

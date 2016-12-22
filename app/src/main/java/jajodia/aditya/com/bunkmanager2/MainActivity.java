@@ -3,9 +3,11 @@ package jajodia.aditya.com.bunkmanager2;
 import android.app.ActivityOptions;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
@@ -24,10 +26,18 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends FragmentActivity {
 
@@ -77,23 +87,36 @@ boolean exit = false;
 
         infoAlertDialog();
 
-            // getWindow().setEnterTransition(new Explode());
+        assignTable();
 
-            // displaySpeechRecognizer();
+        Cursor cursor = DatabaseOpenHelperTwo.readAllRows(this);
 
+        cursor.moveToFirst();
+        boolean status2=true;
+        if(cursor.getCount()>0){
+            status2 = false;
+            int j=0;
+            do{
+                Log.d(TAG,"came in  loop"+" "+j);
 
-            //Log.d(TAG,"not working");
+                for(int i=1;i<9;i++){
+                    timeTable[j][i-1].setText(cursor.getString(i));
+                }
+                j++;
+            }while (cursor.moveToNext()&&j<=5);
 
+        }
+        Log.d(TAG,"came out of loop");
             btn = (Button) findViewById(R.id.btn_done);
 
             // btn.setBackgroundColor(getResources().getColor(R.color.btn_color));
 
 
-            btn.setOnClickListener(new View.OnClickListener() {
+        final boolean finalStatus = status2;
+        btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     map = new HashMap<String, Integer>();
-                    assignTable();
                     readTable();
                     size = map.size();
                     if (size == 0) {
@@ -103,13 +126,12 @@ boolean exit = false;
 
                         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                         builder.setTitle("You have a total of" + " " + size + " " + "subjects");
-                        //  builder.setCancelable(true);
+
+                        builder.setIcon(R.drawable.ic_notifications_none_black_24dp);
 
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
-
 
 
                                 Log.d(TAG, "coming hone");
@@ -124,10 +146,14 @@ boolean exit = false;
 
 
                                 for (int i = 0; i < 6; i++) {
-                                    long t = DatabaseOpenHelperTwo.insertData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
+                                    long t;
+                                    if(finalStatus)
+                                    t = DatabaseOpenHelperTwo.insertData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
+                                   else
+                                    t = DatabaseOpenHelperTwo.updateData(MainActivity.this,i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
                                     Log.d(TAG, "Row" + " " + t);
                                 }
-                                Intent in= new Intent(MainActivity.this, TotalInfo.class);
+                                Intent in = new Intent(MainActivity.this, TotalInfo.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -153,8 +179,8 @@ boolean exit = false;
 
                 }
             });
-
         }
+
 
 
     public void assignTable() {
@@ -241,6 +267,48 @@ boolean exit = false;
 
 
            // Log.d(TAG,"Database Two : "+t);
+        }
+            HashMap<String , Integer>map1 = new HashMap<>();
+        try {
+            Log.d(TAG,"came in try1");
+            FileInputStream fileInputStream = new FileInputStream(getApplicationContext().getFilesDir()+"/HashMap.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            map1 = (HashMap)objectInputStream.readObject();
+            objectInputStream.close();
+        } catch (FileNotFoundException e) {
+            try {
+                Log.d(TAG,"came in try2");
+                FileOutputStream fileOutputStream = getApplicationContext().openFileOutput("HashMap.ser",Context.MODE_PRIVATE);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(map);
+                objectOutputStream.close();
+            } catch (Exception e2) {
+                e.printStackTrace();
+            }
+        } catch (StreamCorruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        for (Object key : map1.keySet()){
+
+            Log.d(TAG,"came in delete row");
+
+            if(!map.containsKey(key.toString())){
+                DatabaseOpenHelper.deleteRow(this,key.toString());
+            }
+        }
+        try {
+            Log.d(TAG,"came in try3");
+            FileOutputStream fileOutputStream = getApplicationContext().openFileOutput("HashMap.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(map);
+            objectOutputStream.close();
+        }catch (Exception e){
+
         }
     }
 

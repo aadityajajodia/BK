@@ -82,6 +82,53 @@ public class DatabaseOpenHelperTwo extends SQLiteOpenHelper {
         return  cursor;
     }
 
+    public static Cursor readAllRows(Context c){
 
+
+        databaseOpenHelperTwo = new DatabaseOpenHelperTwo(c);
+
+        SQLiteDatabase database = databaseOpenHelperTwo.getReadableDatabase();
+
+        String projection[]={
+          TimeTable.Columns.DAY,
+                TimeTable.Columns.PERIOD_ONE,
+                TimeTable.Columns.PERIOD_TWO,
+                TimeTable.Columns.PERIOD_THREE,
+                TimeTable.Columns.PERIOD_FOUR,
+                TimeTable.Columns.PERIOD_FIVE,
+                TimeTable.Columns.PERIOD_SIX,
+                TimeTable.Columns.PERIOD_SEVEN,
+                TimeTable.Columns.PERIOD_EIGHT
+        };
+
+        Cursor cursor = database.query(TimeTable.TABLE_NAME,projection,null,null,null,null,null);
+
+        return cursor;
+
+    }
+
+    public static long updateData(Context c , int day,String periodOne,String periodTwo,String periodThree,String periodFour,String periodFive,String periodSix,String periodSeven,String periodEight){
+
+        databaseOpenHelperTwo = new DatabaseOpenHelperTwo(c);
+
+        SQLiteDatabase database = databaseOpenHelperTwo.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(TimeTable.Columns.PERIOD_ONE,periodOne);
+        values.put(TimeTable.Columns.PERIOD_TWO,periodTwo);
+        values.put(TimeTable.Columns.PERIOD_THREE,periodThree);
+        values.put(TimeTable.Columns.PERIOD_FOUR,periodFour);
+        values.put(TimeTable.Columns.PERIOD_FIVE,periodFive);
+        values.put(TimeTable.Columns.PERIOD_SIX,periodSix);
+
+        String whereClause =  TimeTable.Columns.DAY+" =?";
+
+        String whereArgs[] = {String.valueOf(day)};
+
+        long t  = database.update(TimeTable.TABLE_NAME,values,whereClause,whereArgs);
+
+        return t;
+    }
 
 }

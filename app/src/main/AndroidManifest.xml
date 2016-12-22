@@ -42,8 +42,12 @@
         <activity
             android:name=".AboutUsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ContactUsActivity"
-            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ContactUsActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".EditTimeTable"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

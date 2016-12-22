@@ -16,5 +16,8 @@ public class AboutUsActivity extends Activity {
         android.app.ActionBar actionBar = getActionBar();
 
         actionBar.setTitle("ABOUT US");
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
     }
 }

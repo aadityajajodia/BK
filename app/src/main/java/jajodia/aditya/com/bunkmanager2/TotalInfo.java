@@ -58,6 +58,7 @@ public class TotalInfo extends FragmentActivity {
 
     private static final String TAG = "TotalInfo";
     RelativeLayout li;
+    int size;
     static String subjects[];
     WindowManager windowManager ;
     public boolean exit = false;
@@ -148,6 +149,7 @@ public class TotalInfo extends FragmentActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_total_info);
 
+
         Intent in = getIntent();
         boolean bol = in.getBooleanExtra("STATUS",false);
         if(bol) {
@@ -177,7 +179,7 @@ public class TotalInfo extends FragmentActivity {
             SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.MY_FILE, 0);
             String s = sharedPreferences.getString("Subjects", MainActivity.getSubjects());
             final String subject = s; // subjects as a String separated by $
-            int size = sharedPreferences.getInt("Size", MainActivity.size);
+            size = sharedPreferences.getInt("Size", MainActivity.size);
             Log.d(TAG, s + " " + "12" + " " + size);
             subjects = new String[size];
             int l = subject.length();
@@ -373,8 +375,8 @@ public static String[] getSubjects(){
                         case 0 :editAttendanceDialog();
                            // Toast.makeText(TotalInfo.this, "You clicked for attendace", Toast.LENGTH_SHORT).show();
                             break;
-                        case 1 :
-                            Toast.makeText(TotalInfo.this, "You clicked for timetable", Toast.LENGTH_SHORT).show();
+                        case 1 :editTimeTableDialog();
+                           // Toast.makeText(TotalInfo.this, "You clicked for timetable", Toast.LENGTH_SHORT).show();
                             break;
                     default:
                         Toast.makeText(TotalInfo.this, "Nothing selected", Toast.LENGTH_SHORT).show();
@@ -496,6 +498,18 @@ public static String[] getSubjects(){
         builder.create();
         builder.show();
     }
+
+
+    public void editTimeTableDialog(){
+
+
+    Intent in = new Intent(this,MainActivity.class);
+        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(in);
+
+    }
+
 }
 
 
