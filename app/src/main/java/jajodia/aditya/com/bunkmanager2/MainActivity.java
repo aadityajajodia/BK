@@ -378,7 +378,7 @@ public  void displaySpeechRecognizer(){
         builder.setCancelable(true);
 
         builder.create();
-
+    //as
 
         builder.show();
     }
