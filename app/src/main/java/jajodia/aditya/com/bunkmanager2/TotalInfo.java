@@ -280,7 +280,7 @@ public class TotalInfo extends FragmentActivity {
                                         else{
                                         btn[finalI].setTextColor(Color.WHITE);
                                     }
-                                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//
                                     Log.d(TAG, "came in 2");
                                     ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
                                     fragmentTwo.setSubject(subjects[finalI]);
