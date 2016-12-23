@@ -48,6 +48,9 @@
         <activity android:name=".EditTimeTable"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".SettingsActivity"
+            android:theme="@style/PreferenceScreen">
+        </activity>
     </application>
 
 </manifest>

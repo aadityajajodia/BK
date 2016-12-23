@@ -134,6 +134,9 @@ public class TotalInfo extends FragmentActivity {
             case R.id.contact_us : Intent intent1 = new Intent(this,ContactUsActivity.class);
                                     startActivity(intent1);
                                     break;
+            case R.id.settings : Intent in = new Intent(this,SettingsActivity.class);
+                                    //startActivity(in);
+                                    break;
 
             default:
                 Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();

@@ -55,9 +55,9 @@ public class MainActivity extends FragmentActivity {
 //boolean exit = false;
     @Override
     public void onBackPressed() {
-       // super.onBackPressed();
+        super.onBackPressed();
 
-        finish();
+        //finish();
 
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class ContactUsActivity extends Activity {
 
@@ -18,5 +19,18 @@ public class ContactUsActivity extends Activity {
 
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home : onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
     }
 }
