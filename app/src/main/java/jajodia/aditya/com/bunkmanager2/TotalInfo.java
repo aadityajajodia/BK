@@ -120,7 +120,12 @@ public class TotalInfo extends FragmentActivity {
 
             case R.id.share : Intent shareIntent = new Intent(Intent.ACTION_SEND);
                                 shareIntent.setType("text/plain");
-                                String shareBody = "Share context";
+                                String shareBody = "Hello there!\n" +
+                                        "Had trouble managing your attendance last semester? \n" +
+                                        "Well not any more! \n" +
+                                        "Try TICKER. \n" +
+                                        "Your one stop solution for managing the much needed attendance.  \n" +
+                                        "Just keep the app updated with the number of lectures you attend and there you go, TICKER is ready with all the necessary statistics you need to be regular!";
                                 shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Please download the app");
                                 shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
                                 startActivity(Intent.createChooser(shareIntent,"Share Via"));
