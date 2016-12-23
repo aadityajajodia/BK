@@ -241,7 +241,7 @@ public class TotalInfo extends FragmentActivity {
                         switch (event.getAction()) {
                             case MotionEvent.ACTION_UP:
                                 Log.d(TAG, "came in case 2");
-                                btn[finalI].setElevation(0);
+
                                 btn[finalI].setWidth(w / 4);
                                 if(subjects[finalI].length()<=5)
                                     btn[finalI].setText(subjects[finalI]);
@@ -251,7 +251,7 @@ public class TotalInfo extends FragmentActivity {
                                 return true;
                             case MotionEvent.ACTION_MOVE:
                                 Log.d(TAG, "came in case 1");
-                                btn[finalI].setElevation(20);
+
                                 btn[finalI].setWidth(RelativeLayout.LayoutParams.WRAP_CONTENT);
                                 btn[finalI].setText(subjects[finalI]);
                                 return true;

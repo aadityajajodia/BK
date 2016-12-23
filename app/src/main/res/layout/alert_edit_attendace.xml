@@ -5,10 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -23,9 +20,10 @@
                     android:id="@+id/tv_total_alert"
                     android:layout_marginTop="25dp"
                     android:text="TOTAL"
+                    android:layout_marginStart="20dp"
                     android:textColor="@color/colorAccent"
                     android:textSize="20dp"
-                    android:layout_width="200dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     />
                 <EditText
@@ -35,8 +33,9 @@
                     android:textSize="20dp"
                     android:layout_marginTop="25dp"
                     android:layout_toRightOf="@id/tv_total_alert"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -46,10 +45,11 @@
                     android:text="PRESENT"
                     android:textColor="@color/colorAccent"
                     android:textSize="20dp"
+                    android:layout_marginStart="20dp"
                     android:id="@+id/tv_present_alert"
                     android:layout_below="@id/tv_total_alert"
                     android:layout_marginTop="10dp"
-                    android:layout_width="200dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content" />
                 <EditText
                     android:id="@+id/et_present_alert"
@@ -57,11 +57,12 @@
                     android:inputType="number"
                     android:textSize="15dp"
                     android:layout_toRightOf="@id/tv_present_alert"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/tv_present_alert" />
+                    android:layout_alignBottom="@+id/tv_present_alert"
+                />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

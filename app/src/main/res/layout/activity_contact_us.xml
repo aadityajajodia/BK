@@ -12,7 +12,48 @@
 
     <TextView
         android:textColor="@color/color_chech_two"
-        android:text="contact"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:text="tickernotify@gmail.com"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:id="@+id/ticker_email_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/aditya"
+        android:id="@+id/aditya_image_view"
+        android:layout_below="@id/ticker_email_text_view"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aditya Jajodia\n9415918203\naadityajajodia@gmail.com\nStudent At:\nManipal Institute of Technoloy"
+        android:textColor="#060606"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:textSize="19.5dp"
+        android:layout_toRightOf="@id/aditya_image_view"
+        android:layout_below="@id/ticker_email_text_view"
+        />
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/kunal"
+        android:id="@+id/kunal_image_view"
+        android:layout_below="@id/ticker_email_text_view"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KUNAL SINGH\n9711890684\nsingh.kunal112@gmail.com\nStudent At:\nDelhi Technological University"
+        android:textColor="#060606"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="195dp"
+        android:textSize="18.5dp"
+        android:layout_toRightOf="@id/kunal_image_view"
+        android:layout_below="@id/ticker_email_text_view"
+        />
 </RelativeLayout>
