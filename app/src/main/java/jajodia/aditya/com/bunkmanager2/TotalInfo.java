@@ -267,6 +267,7 @@ public class TotalInfo extends FragmentActivity {
                                 if (c.getCount() <= 0) {
                                     btn[finalI].setTextColor(Color.WHITE);
                                     Log.d(TAG, "came in 1");
+                                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                                     ButtonFragment fragment = new ButtonFragment();
                                     fragment.setSubject(subjects[finalI]);
                                     //   Log.d(TAG,"button called"+" "+finalI);
@@ -279,6 +280,7 @@ public class TotalInfo extends FragmentActivity {
                                         else{
                                         btn[finalI].setTextColor(Color.WHITE);
                                     }
+                                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                                     Log.d(TAG, "came in 2");
                                     ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
                                     fragmentTwo.setSubject(subjects[finalI]);
