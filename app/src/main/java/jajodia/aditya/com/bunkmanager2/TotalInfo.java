@@ -53,14 +53,27 @@ import com.google.android.gms.ads.MobileAds;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 public class TotalInfo extends FragmentActivity {
 
 
+    public double minPerc=75.0;
     private static final String TAG = "TotalInfo";
+    public static final String MY_PERC="MyPerc";
     RelativeLayout li;
     int size;
     static String subjects[];
     WindowManager windowManager ;
+    SharedPreferences sharedPreferences ;
     public boolean exit = false;
     @Override
     public void onBackPressed() {
@@ -135,12 +148,11 @@ public class TotalInfo extends FragmentActivity {
             case R.id.contact_us : Intent intent1 = new Intent(this,ContactUsActivity.class);
                                     startActivity(intent1);
                                     break;
-            case R.id.settings : Intent in = new Intent(this,SettingsActivity.class);
-                                    startActivity(in);
-                                    break;
             case R.id.item_info : Intent in2 = new Intent(this,InfoActivity.class);
                                         startActivity(in2);
                                         break;
+            case R.id.reset_item : resetAlertDialog();
+                                    break;
 
             default:
                 Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();
@@ -156,6 +168,8 @@ public class TotalInfo extends FragmentActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_total_info);
 
+        sharedPreferences = getSharedPreferences(MY_PERC,0);
+        minPerc = sharedPreferences.getFloat("minPerc",75);
 
         Intent in = getIntent();
         boolean bol = in.getBooleanExtra("STATUS",false);
@@ -350,7 +364,7 @@ public static String[] getSubjects(){
 
             float att = ((float)p/t)*100;
 
-            if(att>=75.0)
+            if(att>=minPerc)
                 return false;
             else
                 return true;
@@ -376,7 +390,7 @@ public static String[] getSubjects(){
                 return true;
             }
         });
-        String [] edit = {"Edit Attendance","Edit TimeTable"};
+        String [] edit = {"Edit Attendance","Edit TimeTable","Edit Minimum Attendance"};
 
         builder.setItems(edit, new DialogInterface.OnClickListener() {
             @Override
@@ -390,6 +404,8 @@ public static String[] getSubjects(){
                         case 1 :editTimeTableDialog();
                            // Toast.makeText(TotalInfo.this, "You clicked for timetable", Toast.LENGTH_SHORT).show();
                             break;
+                        case 2 : editMinAttendacePerc();
+                                    break;
                     default:
                         Toast.makeText(TotalInfo.this, "Nothing selected", Toast.LENGTH_SHORT).show();
                         break;
@@ -543,6 +559,167 @@ public static String[] getSubjects(){
 
     }
 
+    public void editMinAttendacePerc(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Enter minimum required attendance");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.edit_min_perc_alert,null);
+
+        builder.setView(view);
+
+        final EditText editText = (EditText)view.findViewById(R.id.min_perc);
+
+        editText.setHint(String.valueOf(minPerc)+"%");
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (editText.getText().toString().isEmpty()){
+
+                }
+                else {
+                    float newperc = Float.parseFloat(editText.getText().toString());
+
+                    if (newperc == 0) {
+                        Toast.makeText(TotalInfo.this, "Minimum percentage cannot be zero", Toast.LENGTH_SHORT).show();
+                    } else {
+                        minPerc = newperc;
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putFloat("minPerc", newperc);
+                        editor.commit();
+                    }
+                }
+                Toast.makeText(TotalInfo.this, "Minimun Percentage is set to" + " " + minPerc+"%", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+        builder.create();
+        builder.show();
+
+    }
+
+    public void resetAlertDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        String ch[] = {"Reset Subject Attendance","Reset Time Table"};
+
+
+        builder.setCancelable(false);
+        builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if(keyCode==KeyEvent.KEYCODE_BACK)
+                    dialog.cancel();
+
+                return false;
+            }
+        });
+
+        builder.setItems(ch, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(TotalInfo.this);
+                builder1.setTitle("WARNING");
+                builder1.setCancelable(false);
+                builder1.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                        if(keyCode==KeyEvent.KEYCODE_BACK)
+                            dialog.cancel();
+
+                        return false;
+                    }
+                });
+                builder1.setIcon(R.drawable.ic_warning_black_24dp);
+                switch (which){
+
+                    case 0:builder1.setMessage("Are you sure you want to delete the attendance data for all subjects");
+                            builder1.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DatabaseOpenHelper.deleteAllRows(TotalInfo.this);
+                                    Intent in = new Intent(TotalInfo.this,TotalInfo.class);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(in);
+                                }
+                            });
+                        builder1.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder1.create();
+                        builder1.show();
+                            break;
+                    case 1: builder1.setMessage("Are you sure want to reset the time table" );
+                            builder1.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DatabaseOpenHelperTwo.deleteAllRows(TotalInfo.this);
+                                    DatabaseOpenHelperThree.deleteAllRows(TotalInfo.this);
+                                    HashMap<String , Integer>map1 = new HashMap<>();
+                                    try {
+                                        FileInputStream fileInputStream = new FileInputStream(getApplicationContext().getFilesDir()+"/HashMap.ser");
+                                        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                                        map1 = (HashMap)objectInputStream.readObject();
+                                        objectInputStream.close();
+                                    }catch(Exception e){
+
+                                    }
+                                    Set<String> set = new HashSet<String>();
+                                    for(Object key : map1.keySet()){
+                                        String match = key.toString();
+                                        set.add(match);
+                                    }
+                                    map1.keySet().removeAll(set);
+                                    try{
+                                        FileOutputStream fileOutputStream = getApplicationContext().openFileOutput("HashMap.ser",Context.MODE_PRIVATE);
+                                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                                        objectOutputStream.writeObject(map1);
+                                        objectOutputStream.close();
+                                    }catch (Exception e){
+
+                                    }
+                                    Intent in = new Intent(TotalInfo.this,TotalInfo.class);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(in);
+                                }
+                            });
+
+                        builder1.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        builder1.create();
+                        builder1.show();
+                            break;
+
+                }
+
+            }
+        });
+
+        builder.create();
+        builder.show();
+    }
 }
 
 

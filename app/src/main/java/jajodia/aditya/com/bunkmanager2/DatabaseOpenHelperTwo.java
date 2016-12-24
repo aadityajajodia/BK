@@ -135,4 +135,15 @@ public class DatabaseOpenHelperTwo extends SQLiteOpenHelper {
         return t;
     }
 
+    public static long deleteAllRows(Context c){
+
+        databaseOpenHelperTwo = new DatabaseOpenHelperTwo(c);
+
+        SQLiteDatabase database = databaseOpenHelperTwo.getWritableDatabase();
+
+        long t =database.delete(TimeTable.TABLE_NAME,null,null);
+
+        return t;
+
+    }
 }

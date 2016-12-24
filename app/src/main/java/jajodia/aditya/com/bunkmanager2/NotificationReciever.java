@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.util.Log;
@@ -80,7 +81,7 @@ public class NotificationReciever extends BroadcastReceiver {
         return c;
     }
 
-    public static void makeNotifiaction(Context context,int day){
+    public static void makeNotifiaction(Context context,int day) {
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent intent1 = new Intent(context, DayInput.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -88,40 +89,46 @@ public class NotificationReciever extends BroadcastReceiver {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 50, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        NotificationCompat.Builder builder;
+        builder = new NotificationCompat.Builder(context);
         builder.setContentIntent(pendingIntent);
         builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setColor(Color.parseColor("#03a9f4"));
         builder.setOngoing(true);
-        builder.setContentTitle("Time for Attendance");
+        builder.setContentTitle("Mark Today's Attendance");
 
 
-        Cursor cursor1 = DatabaseOpenHelperTwo.readData(context,day);
+        Cursor cursor1 = DatabaseOpenHelperTwo.readData(context, day);
         cursor1.moveToFirst();
-        int t=0;
-        for(int i=1;i<9;i++){
-            if(!cursor1.getString(i).isEmpty()){
+        int t = 0;
+        for (int i = 1; i < 9; i++) {
+            if (!cursor1.getString(i).isEmpty()) {
                 t++;
             }
         }
-        int l = NotificationReciever.periodsDone(day,context);
-        Intent intent = new Intent(context,TotalInfo.class);
+        int l = NotificationReciever.periodsDone(day, context);
+        Intent intent = new Intent(context, TotalInfo.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra("STATUS",true);
+        intent.putExtra("STATUS", true);
 
-        PendingIntent pendingIntent1 = PendingIntent.getActivity(context,60,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        if(l==0){
-            builder.addAction(R.mipmap.ic_launcher,"Today was a holiday!!",pendingIntent1);
-        }else{
-            builder.addAction(R.mipmap.ic_launcher,"I will edit later!!",pendingIntent1);
-        }
-        if((t-l)==0)
+        PendingIntent pendingIntent1 = PendingIntent.getActivity(context, 60, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.addAction(0, "No classes Today", pendingIntent1);
+        builder.addAction(0, "Mark it now", pendingIntent);
+        if ((t - l) == 0)
             manager.cancelAll();
         else {
+            //builder.setStyle(new NotificationCompat.BigTextStyle().bigText("You still have " + (t - l) + " left unmarked"));
             builder.setContentText("You still have " + (t - l) + " left unmarked");
-
-
             manager.notify(50, builder.build());
+            if(l!=0){
+                builder.mActions.clear();
+                builder.addAction(0, "Mark it now", pendingIntent);
+                manager.notify(50,builder.build());
+            }
         }
+
+
     }
-}
+    }
+

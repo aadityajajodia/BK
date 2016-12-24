@@ -118,4 +118,14 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return t;
 
     }
+    public static long deleteAllRows(Context c ){
+
+        databaseOpenHelper = new DatabaseOpenHelper(c);
+
+        SQLiteDatabase database = databaseOpenHelper.getWritableDatabase();
+
+        long t = database.delete(SubjectTable.TABLE_NAME,null,null);
+
+        return t;
+    }
 }

@@ -108,6 +108,17 @@ public class DatabaseOpenHelperThree extends SQLiteOpenHelper {
         return t;
     }
 
+    public static long deleteAllRows(Context c){
+
+        databaseOpenHelperThree = new DatabaseOpenHelperThree(c);
+
+        SQLiteDatabase database = databaseOpenHelperThree.getWritableDatabase();
+
+        long t = database.delete(WeekPeriodTable.TABLE_NAME,null,null);
+
+        return t;
+    }
+
 
 
 }

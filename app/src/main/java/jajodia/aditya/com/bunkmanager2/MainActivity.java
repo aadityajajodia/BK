@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
@@ -98,7 +99,7 @@ public class MainActivity extends FragmentActivity {
 
             // btn.setBackgroundColor(getResources().getColor(R.color.btn_color));
 
-
+        btn.setTextColor(Color.parseColor("#03a9f4"));
         final boolean finalStatus = status2;
         btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -299,6 +300,7 @@ public class MainActivity extends FragmentActivity {
 
             Log.d(TAG,"came in delete row");
             String match = key.toString();
+            Log.d(TAG,match);
             if(!map.containsKey(match)){
 
                 for(int i=0;i<6;i++){
