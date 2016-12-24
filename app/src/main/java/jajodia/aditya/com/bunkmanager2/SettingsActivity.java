@@ -12,7 +12,7 @@ import android.widget.TimePicker;
  * Created by kunalsingh on 22/12/16.
  */
 
-public class SettingsActivity extends PreferenceFragment {
+public class SettingsActivity extends PreferenceActivity {
 
     private static final String TAG ="SettingActivity" ;
 
@@ -21,15 +21,6 @@ public class SettingsActivity extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings_screen);
 
-        Preference preference = getPreferenceScreen().findPreference("PickTime");
-        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-
-                Log.d(TAG,"came in prefer");
-                return false;
-            }
-        });
 
     }
 }

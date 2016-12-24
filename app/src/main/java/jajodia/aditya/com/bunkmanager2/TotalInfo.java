@@ -136,7 +136,7 @@ public class TotalInfo extends FragmentActivity {
                                     startActivity(intent1);
                                     break;
             case R.id.settings : Intent in = new Intent(this,SettingsActivity.class);
-                                    //startActivity(in);
+                                    startActivity(in);
                                     break;
             case R.id.item_info : Intent in2 = new Intent(this,InfoActivity.class);
                                         startActivity(in2);
