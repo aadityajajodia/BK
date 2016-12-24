@@ -513,7 +513,7 @@ public static String[] getSubjects(){
                             ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
                             fragmentTwo.setSubject(subjects[sub]);
                             fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
-                            fragmentTransaction.commit();
+                            fragmentTransaction.commit();//
                         }
                         }
 
