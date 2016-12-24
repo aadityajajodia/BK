@@ -9,8 +9,43 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jajodia.aditya.com.bunkmanager2.InfoActivity">
-<TextView
-    android:text="INFo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/info_heading_text_view"
+            android:text="Here's a glimpse of how TICKER works:"
+            android:textStyle="bold"
+            android:textColor="#536DFE"
+            android:textSize="18dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="2dp"
+            android:textSize="18dp"
+            android:layout_below="@id/info_heading_text_view"
+            android:text="1. Enter your time table just once with all the subjects and lectures scheduled for the entire Semester.\n
+2. You can modify the time table anytime according to your needs\n
+3. The minimum attendance is set to 75% which can be updated any time.\n
+4. If any of the subject tab is red, it indicates that your attendance is below the minimum required bar.\n
+5. A notification at 21:00 would pop up each day demanding that day's number of lectures attended and skipped. You can either accept it or decline it if it was a holiday.\n
+6. At any point of time you can edit the total number of lectures that took place and the number of lectures you attended out of them.\n
+7. All the data can be reset and you can start afresh.\n"
+            android:textColor="#060606"
+            />
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>
 </RelativeLayout>
