@@ -453,7 +453,7 @@ public static String[] getSubjects(){
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 
-                if(keyCode==KeyEvent.KEYCODE_BACK)
+                if(keyCode==KeyEvent.KEYCODE_BACK)//
                     dialog.cancel();
 
                 return false;
