@@ -1,28 +1,22 @@
 package jajodia.aditya.com.bunkmanager2;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class AboutUsActivity extends Activity {
-
-
-
+public class InfoActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
-
-
+        setContentView(R.layout.activity_info);
         android.app.ActionBar actionBar = getActionBar();
 
-        actionBar.setTitle("ABOUT US");
+        actionBar.setTitle("INFO");
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -30,9 +24,9 @@ public class AboutUsActivity extends Activity {
 
         switch (item.getItemId()){
             case android.R.id.home : onBackPressed();
-                                        return true;
-        default:
-            return super.onOptionsItemSelected(item);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
         }
 

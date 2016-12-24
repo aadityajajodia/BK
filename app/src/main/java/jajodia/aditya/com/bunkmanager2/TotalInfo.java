@@ -131,10 +131,6 @@ public class TotalInfo extends FragmentActivity {
                                 startActivity(Intent.createChooser(shareIntent,"Share Via"));
                                 break;
 
-            case R.id.item_about : Intent intent = new Intent(this,AboutUsActivity.class);
-                                                  //  overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-                                                    startActivity(intent);
-                                                    break;
 
             case R.id.contact_us : Intent intent1 = new Intent(this,ContactUsActivity.class);
                                     startActivity(intent1);
@@ -142,6 +138,9 @@ public class TotalInfo extends FragmentActivity {
             case R.id.settings : Intent in = new Intent(this,SettingsActivity.class);
                                     //startActivity(in);
                                     break;
+            case R.id.item_info : Intent in2 = new Intent(this,InfoActivity.class);
+                                        startActivity(in2);
+                                        break;
 
             default:
                 Toast.makeText(this, "Not came", Toast.LENGTH_SHORT).show();
@@ -453,7 +452,7 @@ public static String[] getSubjects(){
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 
-                if(keyCode==KeyEvent.KEYCODE_BACK)//
+                if(keyCode==KeyEvent.KEYCODE_BACK)
                     dialog.cancel();
 
                 return false;

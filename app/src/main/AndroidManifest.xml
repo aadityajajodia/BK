@@ -39,21 +39,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".AboutUsActivity"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".ContactUsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".EditTimeTable"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".SettingsActivity"
-            android:theme="@style/PreferenceScreen">
-        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+        <activity
+            android:name=".EditTimeTable"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/PreferenceScreen"></activity>
+
+
+        <activity android:name=".InfoActivity"
+            android:theme="@style/AppTheme"
+            android:icon="@drawable/aditya"></activity>
     </application>
 
 </manifest>
