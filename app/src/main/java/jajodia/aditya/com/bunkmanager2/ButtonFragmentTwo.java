@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -48,7 +49,10 @@ public class ButtonFragmentTwo extends Fragment {
 
         float finalRadius = (float) Math.hypot(cx,cy);
 
-        final Animator animator = ViewAnimationUtils.createCircularReveal(view,cx,cy,0,finalRadius);
+         Animator animator = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            animator = ViewAnimationUtils.createCircularReveal(view,cx,cy,0,finalRadius);
+        }
         animator.start();
     }
 
@@ -119,7 +123,9 @@ public class ButtonFragmentTwo extends Fragment {
         PieData pieData = new PieData(pieDataSet);
 
         pieChart.setData(pieData);
-        pieChart.setContentDescription("good");
+        pieChart.setContentDescription("");
+        Description description = pieChart.getDescription();
+        description.setEnabled(false);
         pieChart.setDrawHoleEnabled(false);
         Legend legend = pieChart.getLegend();
         legend.setEnabled(false);

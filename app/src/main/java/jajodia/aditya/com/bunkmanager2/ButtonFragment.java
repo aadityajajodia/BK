@@ -49,7 +49,10 @@ public class ButtonFragment extends Fragment {
 
         float finalRadius = (float) Math.hypot(cx,cy);
 
-        final Animator animator = ViewAnimationUtils.createCircularReveal(view1,cx,cy,0,finalRadius);
+         Animator animator = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            animator = ViewAnimationUtils.createCircularReveal(view1,cx,cy,0,finalRadius);
+        }
         animator.start();
         }
 
@@ -78,21 +81,25 @@ public class ButtonFragment extends Fragment {
                     int total = Integer.parseInt(String.valueOf(etTotal.getText()));
                     int present = Integer.parseInt(String.valueOf(etPresent.getText()));
 
-                    if (present > total) {
-                        Toast.makeText(getActivity(), "Present cannot be greater than total", Toast.LENGTH_SHORT).show();
-                    } else {
+                    if(total==0) {
+                        Toast.makeText(getActivity(), "Total cannot be zero", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if (present > total) {
+                            Toast.makeText(getActivity(), "Present cannot be greater than total", Toast.LENGTH_SHORT).show();
+                        } else {
 
-                        long t = DatabaseOpenHelper.insertData(getActivity(), subject, total, present);
-                        Log.d(TAG, "value : " + t);
+                            long t = DatabaseOpenHelper.insertData(getActivity(), subject, total, present);
+                            Log.d(TAG, "value : " + t);
 
 
-                        FragmentManager manager = getFragmentManager();
-                        ButtonFragmentTwo bt = new ButtonFragmentTwo();
-                        bt.setSubject(subject);
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.replace(R.id.frame_layout, bt, null);
-                        transaction.commit();
+                            FragmentManager manager = getFragmentManager();
+                            ButtonFragmentTwo bt = new ButtonFragmentTwo();
+                            bt.setSubject(subject);
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.frame_layout, bt, null);
+                            transaction.commit();
 
+                        }
                     }
                 }
                 }

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Time;
+
 /**
  * Created by kunalsingh on 14/12/16.
  */
@@ -121,6 +123,8 @@ public class DatabaseOpenHelperTwo extends SQLiteOpenHelper {
         values.put(TimeTable.Columns.PERIOD_FOUR,periodFour);
         values.put(TimeTable.Columns.PERIOD_FIVE,periodFive);
         values.put(TimeTable.Columns.PERIOD_SIX,periodSix);
+        values.put(TimeTable.Columns.PERIOD_SEVEN,periodSeven);
+        values.put(TimeTable.Columns.PERIOD_EIGHT,periodEight);
 
         String whereClause =  TimeTable.Columns.DAY+" =?";
 

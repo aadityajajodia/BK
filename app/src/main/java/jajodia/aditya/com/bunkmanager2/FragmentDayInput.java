@@ -205,7 +205,7 @@ public class FragmentDayInput extends Fragment {
 
     private void onClickedSpinner() {
 
-    spinner.setBackgroundColor(Color.parseColor("#536dfe"));
+
        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -213,6 +213,7 @@ public class FragmentDayInput extends Fragment {
               String s = (String) parent.getItemAtPosition(position);
                 Log.d(TAG,"selected" +" "+s);
            subjectReplaced = s;
+               ((TextView)parent.getChildAt(0)).setTextColor(Color.BLACK);
            }
 
            @Override

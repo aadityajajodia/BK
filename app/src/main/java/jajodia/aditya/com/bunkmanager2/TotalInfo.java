@@ -456,7 +456,7 @@ public static String[] getSubjects(){
                 if(keyCode==KeyEvent.KEYCODE_BACK)
                     dialog.cancel();
 
-                return true;
+                return false;
             }
         });
         builder.setView(view);
@@ -485,9 +485,19 @@ public static String[] getSubjects(){
                 else {
                     int t = Integer.parseInt((et_t.getText().toString()));
                     int p = Integer.parseInt((et_p.getText().toString()));
-                    if(t==0)
-                        Toast.makeText(TotalInfo.this, "Please Enter Total", Toast.LENGTH_SHORT).show();
-                    else {
+                    if(t==0) {
+                        Toast.makeText(TotalInfo.this, "Total cannot be zero", Toast.LENGTH_SHORT).show();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        ButtonFragment fragment = new ButtonFragment();
+                        fragment.setSubject(subjects[sub]);
+                        //   Log.d(TAG,"button called"+" "+finalI);
+                        fragmentTransaction.replace(R.id.frame_layout, fragment, null);
+                        fragmentTransaction.commit();
+
+
+                    }
+                        else {
                         Log.d(TAG, "check" + " " + t + " " + p);
                         if (p > t) {
                             Toast.makeText(TotalInfo.this, "Present cannot be greater than Total", Toast.LENGTH_SHORT).show();
@@ -498,15 +508,15 @@ public static String[] getSubjects(){
                             } else
                                 DatabaseOpenHelper.updateData(TotalInfo.this, subjects[sub], t, p);
 
-                        }
 
-                        FragmentManager manager = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = manager.beginTransaction();
-                        ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
-                        fragmentTwo.setSubject(subjects[sub]);
-                        fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
-                        fragmentTransaction.commit();
-                    }
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                            ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
+                            fragmentTwo.setSubject(subjects[sub]);
+                            fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
+                            fragmentTransaction.commit();
+                        }
+                        }
 
                 }
             }

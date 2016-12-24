@@ -86,6 +86,7 @@ public class MainActivity extends FragmentActivity {
                 Log.d(TAG,"came in  loop"+" "+j);
 
                 for(int i=1;i<9;i++){
+                    Log.d(TAG," " +cursor.getString(i));
                     timeTable[j][i-1].setText(cursor.getString(i));
                 }
                 j++;
@@ -128,16 +129,24 @@ public class MainActivity extends FragmentActivity {
                                 editor.putInt("Size", size);
                                 editor.commit();
 
-                                setAlarm(8, 00, 00);
+                                setAlarm(7, 00, 00);
+
 
 
                                 for (int i = 0; i < 6; i++) {
+                                    for (int j = 0; j < 8; j++) {
+                                        Log.d(TAG, " " + i + "  " + periods[i][j]);
+                                    }
                                     long t;
-                                    if(finalStatus)
-                                    t = DatabaseOpenHelperTwo.insertData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
-                                   else
-                                    t = DatabaseOpenHelperTwo.updateData(MainActivity.this,i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
-                                    Log.d(TAG, "Row" + " " + t);
+                                    if (finalStatus) {
+                                        t = DatabaseOpenHelperTwo.insertData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
+                                        Log.d(TAG, "came in ifff");
+                                    } else {
+                                        t = DatabaseOpenHelperTwo.updateData(MainActivity.this, i + 1, periods[i][0], periods[i][1], periods[i][2], periods[i][3], periods[i][4], periods[i][5], periods[i][6], periods[i][7]);
+                                        Log.d(TAG, "came in elseee");
+
+                                        Log.d(TAG, "Row" + " " + t);
+                                    }
                                 }
                                 Intent in = new Intent(MainActivity.this, TotalInfo.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -228,8 +237,10 @@ public class MainActivity extends FragmentActivity {
 
         subjects = "";
 
+
         for (int i = 0; i < 6; i++) {
 
+            Cursor cursor = DatabaseOpenHelperThree.readData(this,i+1);
             for (int j = 0; j < 8; j++) {
                 String s="";
                 if (timeTable[i][j].getText() != null){
@@ -248,11 +259,16 @@ public class MainActivity extends FragmentActivity {
                 }
                 periods[i][j] = s;
 
-            DatabaseOpenHelperThree.insertData(this,i+1,0,0,0,0,0,0,0,0);
+
+            //Log.d(TAG,"readTable "+ " "+t);
+            }
+            cursor.moveToFirst();
+            if(cursor.getCount()<=0) {
+                long t = DatabaseOpenHelperThree.insertData(this, i + 1, 0, 0, 0, 0, 0, 0, 0, 0);
             }
 
 
-           // Log.d(TAG,"Database Two : "+t);
+            // Log.d(TAG,"Database Two : "+t);
         }
             HashMap<String , Integer>map1 = new HashMap<>();
         try {
@@ -282,8 +298,28 @@ public class MainActivity extends FragmentActivity {
         for (Object key : map1.keySet()){
 
             Log.d(TAG,"came in delete row");
+            String match = key.toString();
+            if(!map.containsKey(match)){
 
-            if(!map.containsKey(key.toString())){
+                for(int i=0;i<6;i++){
+                    Cursor cursor2  = DatabaseOpenHelperTwo.readData(this,i+1);
+                    Cursor cursor3  = DatabaseOpenHelperThree.readData(this,i+1);
+                    cursor3.moveToFirst();
+                    cursor2.moveToFirst();
+                    int st[] = new int[8];
+                    String s[] = new String[8];
+                    for(int j=0;j<8;j++){
+                        Log.d(TAG,"see "+j);
+                        s[j] = cursor2.getString(j+1);
+                        st[j] = cursor3.getInt(j);
+                    if(s[j].equals(match))
+                        st[j]=0;
+                    }
+
+                    DatabaseOpenHelperThree.upgradeData(this,i+1,st[0],st[1],st[2],st[3],st[4],st[5],st[6],st[7]);
+
+                }
+
                 DatabaseOpenHelper.deleteRow(this,key.toString());
             }
         }
@@ -311,6 +347,7 @@ public class MainActivity extends FragmentActivity {
     public void setAlarm(int hr , int min , int sec) {
 
 
+        Log.d(TAG,"came in alarm");
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(Calendar.HOUR_OF_DAY,hr);
