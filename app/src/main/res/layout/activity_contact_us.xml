@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aditya Jajodia\n9415918203\naadityajajodia@gmail.com\nStudent At:\nManipal Institute of Technoloy"
+        android:text="Aditya Jajodia\n9415918203\naadityajajodia@gmail.com\nStudent At:\nManipal Institute of Technology"
         android:textColor="#060606"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
