@@ -149,6 +149,8 @@ public class MainActivity extends FragmentActivity {
                                         Log.d(TAG, "Row" + " " + t);
                                     }
                                 }
+                                int day = DayInput.setDate();
+                                NotificationReciever.makeNotifiaction(MainActivity.this,day);
                                 Intent in = new Intent(MainActivity.this, TotalInfo.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

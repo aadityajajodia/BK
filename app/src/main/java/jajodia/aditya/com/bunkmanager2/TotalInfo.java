@@ -693,6 +693,8 @@ public static String[] getSubjects(){
                                     }catch (Exception e){
 
                                     }
+                                    NotificationManager manager = (NotificationManager) TotalInfo.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                                    manager.cancel(50);
                                     Intent in = new Intent(TotalInfo.this,TotalInfo.class);
                                     in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -710,7 +712,8 @@ public static String[] getSubjects(){
 
                         builder1.create();
                         builder1.show();
-                            break;
+
+                        break;
 
                 }
 
