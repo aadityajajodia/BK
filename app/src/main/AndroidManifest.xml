@@ -40,18 +40,19 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ContactUsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EditTimeTable"
-            android:theme="@style/AppTheme"></activity>
-        <activity
             android:name=".SettingsActivity"
-            android:theme="@style/PreferenceScreen"></activity>
-
-
-        <activity android:name=".InfoActivity"
+            android:theme="@style/PreferenceScreen" />
+        <activity
+            android:name=".InfoActivity"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/aditya"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ViewTimeTable"
             android:theme="@style/AppTheme"
-            android:icon="@drawable/aditya"></activity>
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

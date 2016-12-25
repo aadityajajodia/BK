@@ -129,6 +129,10 @@ public class TotalInfo extends FragmentActivity {
 
         switch(id) {
 
+            case R.id.item_view_tt :Intent int2 = new Intent(this,ViewTimeTable.class);
+                                    startActivity(int2);
+                                    break;
+
             case R.id.item_edit : editAlertDialog();
                                     break;
 

@@ -131,7 +131,7 @@ public class MainActivity extends FragmentActivity {
                                 editor.putInt("Size", size);
                                 editor.commit();
 
-                                setAlarm(7, 00, 00);
+                                setAlarm(21, 00, 00);
 
 
 
