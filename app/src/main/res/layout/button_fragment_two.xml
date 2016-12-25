@@ -8,6 +8,7 @@
         android:textColor="@color/color_chech_two"
         android:elevation="10dp"
         android:translationZ="20dp"
+        android:layout_weight="1"
         android:id="@+id/tv_subject_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,18 +16,27 @@
         android:layout_centerHorizontal="true"
     />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_below="@id/tv_subject_two"
+        />
     <TextView
-        android:textColor="#44050505"
+        android:textColor="#212121"
         android:layout_marginTop="50dp"
         android:id="@+id/tv_total_two"
         android:text="TOTAL"
         android:background="@drawable/myrect"
         android:textSize="20dp"
+        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
+        android:layout_marginLeft="25dp"
+        android:layout_weight="1"
         android:textColor="@color/colorAccent"
-        android:layout_marginStart="30dp"
+
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@id/tv_total_two"
         android:textSize="20dp"
@@ -34,10 +44,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:textColor="#44050505"
+        android:textColor="#212121"
         android:text="PRESENT"
+        android:layout_marginLeft="50dp"
+        android:layout_weight="1"
         android:background="@drawable/myrect"
-        android:layout_marginStart="30dp"
+
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@id/tv_total_number"
         android:id="@+id/tv_present_two"
@@ -48,20 +60,35 @@
 
 
     <TextView
+        android:layout_marginLeft="25dp"
         android:textColor="@color/colorAccent"
         android:id="@+id/tv_present_number"
         android:layout_marginTop="50dp"
         android:textSize="20dp"
-        android:layout_marginStart="30dp"
+        android:layout_weight="1"
+
         android:layout_toRightOf="@id/tv_present_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#000000"
+        android:layout_below="@id/tv_present_two"
+        />
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pie_chart"
+        android:layout_marginTop="2dp"
         android:layout_below="@id/tv_present_number"
         android:layout_width="match_parent"
         android:layout_height="200dp">
     </com.github.mikephil.charting.charts.PieChart>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_below="@id/pie_chart"
+        />
 
 </RelativeLayout>
