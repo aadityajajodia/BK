@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:maxLines="1"
             android:text=" "
             android:gravity="center"/>
 
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_weight="1"
+            android:maxLines="1"
             android:text="I"
             android:gravity="center"/>
         <TextView
@@ -34,17 +36,20 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="II"
+            android:maxLines="1"
             android:gravity="center"/>
         <TextView
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:maxLines="1"
             android:text="III"/>
         <TextView
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:maxLines="1"
             android:layout_weight="1"
             android:text="IV"/>
         <TextView
@@ -52,20 +57,24 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:maxLines="1"
             android:text="V"/>
         <TextView
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:maxLines="1"
             android:text="VI"/>
         <TextView
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:maxLines="1"
             android:text="VII"/>
         <TextView
+            android:maxLines="1"
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -73,10 +82,12 @@
             android:text="VIII"/>
     </TableRow>
     <TableRow
+
         android:id="@+id/tr_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -84,6 +95,7 @@
             android:gravity="center"/>
 
         <EditText
+            android:maxLines="1"
 
             android:id="@+id/tr_one_et_one"
             android:layout_height="wrap_content"
@@ -92,39 +104,46 @@
             />
 
     <EditText
+        android:maxLines="1"
         android:id="@+id/tr_one_et_two"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent"></EditText>
 
     <EditText
+        android:maxLines="1"
         android:id="@+id/tr_one_et_three"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent"></EditText>
 
     <EditText
+        android:maxLines="1"
         android:id="@+id/tr_one_et_four"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent"></EditText>
 
     <EditText
+        android:maxLines="1"
         android:id="@+id/tr_one_et_five"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_one_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_one_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_one_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -136,12 +155,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="T"
             android:gravity="center"/>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -149,39 +170,46 @@
             />
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_two"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_three"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_four"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_five"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_two_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -192,12 +220,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="W"
             android:gravity="center"/>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -205,39 +235,46 @@
             />
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_two"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_three"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_four"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_five"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_three_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -248,12 +285,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="T"
             android:gravity="center"/>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -261,39 +300,46 @@
             />
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_two"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_three"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_four"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_five"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_four_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -304,12 +350,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="F"
             android:gravity="center"/>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -317,39 +365,46 @@
             />
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_two"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_three"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_four"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_five"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_five_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -360,12 +415,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:maxLines="1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="S"
             android:gravity="center"/>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_one"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -374,39 +431,46 @@
             />
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_two"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_three"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_four"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>ss
 
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_five"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_six"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_seven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"></EditText>
         <EditText
+            android:maxLines="1"
             android:id="@+id/tr_six_et_eight"
             android:layout_width="match_parent"
             android:layout_weight="1"
