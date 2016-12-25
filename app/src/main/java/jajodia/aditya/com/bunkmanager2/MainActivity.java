@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.transition.Explode;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -232,6 +233,12 @@ public class MainActivity extends FragmentActivity {
         timeTable[5][5] = (EditText) findViewById(R.id.tr_six_et_six);
         timeTable[5][6] = (EditText) findViewById(R.id.tr_six_et_seven);
         timeTable[5][7] = (EditText) findViewById(R.id.tr_six_et_eight);
+        for(int i=0;i<6;i++){
+            for(int j=0;j<8;j++){
+                timeTable[i][j].setInputType(InputType.TYPE_CLASS_TEXT);
+
+            }
+        }
 
     }
 
@@ -242,14 +249,17 @@ public class MainActivity extends FragmentActivity {
 
 
         for (int i = 0; i < 6; i++) {
-
             Cursor cursor = DatabaseOpenHelperThree.readData(this,i+1);
             for (int j = 0; j < 8; j++) {
                 String s="";
                 if (timeTable[i][j].getText() != null){
-
-                    s = String.valueOf(timeTable[i][j].getText()).toUpperCase();
-            }
+                    Log.d(TAG,"checking string "+timeTable[i][j].getText().toString()+j);
+                    if(timeTable[i][j].getText().toString().equals("\n")){
+                        Log.d(TAG,"came in line ");
+                    }else {
+                        s = String.valueOf(timeTable[i][j].getText()).toUpperCase();
+                    }
+                    }
 
                 if (map.containsKey(s)) {
 
