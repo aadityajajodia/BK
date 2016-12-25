@@ -26,14 +26,28 @@
                 android:maxLines="1"
                 android:text=" "
                 android:gravity="center"/>
-
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
             <TextView
+                android:id="@+id/I"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:text="I"
                 android:gravity="center"/>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -41,6 +55,12 @@
                 android:text="II"
                 android:maxLines="1"
                 android:gravity="center"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:layout_weight="1"/>
+            </LinearLayout>
             <TextView
                 android:gravity="center"
                 android:layout_height="wrap_content"
@@ -85,7 +105,7 @@
                 android:text="VIII"/>
         </TableRow>
         <TableRow
-
+            android:layout_weight="1"
             android:id="@+id/tt_tr_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -97,14 +117,22 @@
                 android:text="M"
                 android:gravity="center"/>
 
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
             <TextView
                 android:maxLines="1"
-
                 android:id="@+id/tt_tr_one_et_one"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:layout_weight="1"/>
+            </LinearLayout>
 
             <TextView
                 android:maxLines="1"
@@ -152,8 +180,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"></TextView>
         </TableRow>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tt_tr_one"
+            />
         <TableRow
+            android:layout_weight="1"
             android:id="@+id/tt_tr_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -218,7 +252,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"></TextView>
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tt_tr_one"
+            />
         <TableRow
+            android:layout_weight="1"
             android:id="@+id/tt_tr_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -283,7 +324,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"/>
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tt_tr_one"
+            />
         <TableRow
+            android:layout_weight="1"
             android:id="@+id/tt_tr_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -348,7 +396,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"></TextView>
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tt_tr_one"
+            />
         <TableRow
+            android:layout_weight="1"
             android:id="@+id/tt_tr_five"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -413,7 +468,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"></TextView>
         </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tt_tr_one"
+            />
         <TableRow
+            android:layout_weight="1"
             android:id="@+id/tt_tr_six"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
