@@ -97,38 +97,39 @@ public class NotificationReciever extends BroadcastReceiver {
         builder.setOngoing(true);
         builder.setContentTitle("Mark Today's Attendance");
 
-
-        Cursor cursor1 = DatabaseOpenHelperTwo.readData(context, day);
-        cursor1.moveToFirst();
-        int t = 0;
-        for (int i = 1; i < 9; i++) {
-            if (!cursor1.getString(i).isEmpty()) {
-                t++;
+        if (day != 7) {
+            Cursor cursor1 = DatabaseOpenHelperTwo.readData(context, day);
+            cursor1.moveToFirst();
+            int t = 0;
+            for (int i = 1; i < 9; i++) {
+                if (!cursor1.getString(i).isEmpty()) {
+                    t++;
+                }
             }
-        }
-        int l = NotificationReciever.periodsDone(day, context);
-        Intent intent = new Intent(context, TotalInfo.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra("STATUS", true);
+            int l = NotificationReciever.periodsDone(day, context);
+            Intent intent = new Intent(context, TotalInfo.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra("STATUS", true);
 
-        PendingIntent pendingIntent1 = PendingIntent.getActivity(context, 60, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.addAction(0, "No classes Today", pendingIntent1);
-        builder.addAction(0, "Mark it now", pendingIntent);
-        if ((t - l) == 0)
-            manager.cancelAll();
-        else {
-            //builder.setStyle(new NotificationCompat.BigTextStyle().bigText("You still have " + (t - l) + " left unmarked"));
-            builder.setContentText("You still have " + (t - l) + " left unmarked");
-            manager.notify(50, builder.build());
-            if(l!=0){
-                builder.mActions.clear();
-                builder.addAction(0, "Mark it now", pendingIntent);
-                manager.notify(50,builder.build());
+            PendingIntent pendingIntent1 = PendingIntent.getActivity(context, 60, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            builder.addAction(0, "No classes Today", pendingIntent1);
+            builder.addAction(0, "Mark it now", pendingIntent);
+            if ((t - l) == 0)
+                manager.cancelAll();
+            else {
+                //builder.setStyle(new NotificationCompat.BigTextStyle().bigText("You still have " + (t - l) + " left unmarked"));
+                builder.setContentText("You still have " + (t - l) + " left unmarked");
+                manager.notify(50, builder.build());
+                if (l != 0) {
+                    builder.mActions.clear();
+                    builder.addAction(0, "Mark it now", pendingIntent);
+                    manager.notify(50, builder.build());
+                }
             }
+
+
         }
-
-
     }
     }
 
