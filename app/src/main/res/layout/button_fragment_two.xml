@@ -27,7 +27,7 @@
         android:layout_marginTop="50dp"
         android:id="@+id/tv_total_two"
         android:text="TOTAL"
-        android:background="@drawable/myrect"
+
         android:textSize="20dp"
         android:layout_weight="1"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:text="PRESENT"
         android:layout_marginLeft="50dp"
         android:layout_weight="1"
-        android:background="@drawable/myrect"
+
 
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@id/tv_total_number"
