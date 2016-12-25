@@ -265,7 +265,7 @@ public class TotalInfo extends FragmentActivity {
                             case MotionEvent.ACTION_UP:
                                 Log.d(TAG, "came in case 2");
 
-                                btn[finalI].setWidth(w / 4);
+                                btn[finalI].setWidth(w/4);
                                 if(subjects[finalI].length()<=5)
                                     btn[finalI].setText(subjects[finalI]);
                                 else
@@ -299,7 +299,7 @@ public class TotalInfo extends FragmentActivity {
                                 } else {
                                     boolean b = percentattendance(subjects[finalI]);
                                     if (b)
-                                        btn[finalI].setTextColor(Color.parseColor("#FF5722"));
+                                        btn[finalI].setTextColor(Color.RED);
                                         else{
                                         btn[finalI].setTextColor(Color.WHITE);
                                     }

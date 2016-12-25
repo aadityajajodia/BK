@@ -3,6 +3,7 @@ package jajodia.aditya.com.bunkmanager2;
 import android.animation.Animator;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
@@ -63,7 +64,6 @@ public class ButtonFragment extends Fragment {
          view1 = inflater.inflate(R.layout.button_fragment,container,false);
         TextView tv = (TextView)view1.findViewById(R.id.tv_subject);
         tv.setText(subject);
-
         cardView = (CardView)view1.findViewById(R.id.card_view_bf);
 
         Button btn = (Button)view1.findViewById(R.id.btn_sub_done);
