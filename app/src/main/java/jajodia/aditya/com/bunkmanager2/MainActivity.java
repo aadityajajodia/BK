@@ -313,28 +313,30 @@ public class MainActivity extends FragmentActivity {
             Log.d(TAG,"came in delete row");
             String match = key.toString();
             Log.d(TAG,match);
-            if(!map.containsKey(match)){
+            if(!map.containsKey(match)) {
 
-                for(int i=0;i<6;i++){
-                    Cursor cursor2  = DatabaseOpenHelperTwo.readData(this,i+1);
-                    Cursor cursor3  = DatabaseOpenHelperThree.readData(this,i+1);
+                for (int i = 0; i < 6; i++) {
+                    Cursor cursor2 = DatabaseOpenHelperTwo.readData(this, i + 1);
+                    Cursor cursor3 = DatabaseOpenHelperThree.readData(this, i + 1);
                     cursor3.moveToFirst();
                     cursor2.moveToFirst();
-                    int st[] = new int[8];
-                    String s[] = new String[8];
-                    for(int j=0;j<8;j++){
-                        Log.d(TAG,"see "+j);
-                        s[j] = cursor2.getString(j+1);
-                        st[j] = cursor3.getInt(j);
-                    if(s[j].equals(match))
-                        st[j]=0;
+                    if (!(cursor2.getCount() <= 0 || cursor3.getCount() <= 0)) {
+                        int st[] = new int[8];
+                        String s[] = new String[8];
+                        for (int j = 0; j < 8; j++) {
+                            Log.d(TAG, "see " + j);
+                            s[j] = cursor2.getString(j + 1);
+                            st[j] = cursor3.getInt(j);
+                            if (s[j].equals(match))
+                                st[j] = 0;
+                        }
+
+                        DatabaseOpenHelperThree.upgradeData(this, i + 1, st[0], st[1], st[2], st[3], st[4], st[5], st[6], st[7]);
+
                     }
 
-                    DatabaseOpenHelperThree.upgradeData(this,i+1,st[0],st[1],st[2],st[3],st[4],st[5],st[6],st[7]);
-
+                    DatabaseOpenHelper.deleteRow(this, key.toString());
                 }
-
-                DatabaseOpenHelper.deleteRow(this,key.toString());
             }
         }
         try {
