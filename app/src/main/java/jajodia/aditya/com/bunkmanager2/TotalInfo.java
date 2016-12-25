@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -224,9 +225,13 @@ public class TotalInfo extends FragmentActivity {
                 //   Log.d(TAG,"sss"+" " +i);
                 btn[i] = new Button(this);
                 btn[i].setId((i + 1) * 4);
+                btn[i].setBackgroundColor(Color.parseColor("#03a9f4"));
+
                 final int w = getWidth();
                 Log.d(TAG, "width : " + w);
                 params[i] = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params[i].setMargins(4,4,0,0);
+
                 if (i % 4 == 0 && i > 0) {
                     //    Log.d(TAG,"came "+" "+i);
                     params[i].addRule(RelativeLayout.BELOW, btn[i - 4].getId());
