@@ -34,21 +34,27 @@ public class NotificationReciever extends BroadcastReceiver {
 
         if (day != 7) {
 
-            Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
+            Calendar calendar = Calendar.getInstance();
+            int hr = calendar.get(Calendar.HOUR_OF_DAY);
 
-            cursor.moveToFirst();
+            if(hr>=21) {
 
-            boolean st = true;
-            for (int i = 1; i <= 8; i++) {
-                if (!cursor.getString(i).isEmpty()) {
-                    st = false;
-                    break;
+                Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
+
+                cursor.moveToFirst();
+
+                boolean st = true;
+                for (int i = 1; i <= 8; i++) {
+                    if (!cursor.getString(i).isEmpty()) {
+                        st = false;
+                        break;
+                    }
                 }
-            }
-            if (!st) {
+                if (!st) {
 
-                makeNotifiaction(context,day);
+                    makeNotifiaction(context, day);
 
+                }
             }
         }else{
 

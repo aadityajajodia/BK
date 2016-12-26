@@ -150,8 +150,12 @@ public class MainActivity extends FragmentActivity {
                                         Log.d(TAG, "Row" + " " + t);
                                     }
                                 }
+                                Calendar calendar = Calendar.getInstance();
+                                int hr = Calendar.HOUR_OF_DAY;
                                 int day = DayInput.setDate();
-                                NotificationReciever.makeNotifiaction(MainActivity.this,day);
+                                if(hr>=21) {
+                                    NotificationReciever.makeNotifiaction(MainActivity.this, day);
+                                }
                                 Intent in = new Intent(MainActivity.this, TotalInfo.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
