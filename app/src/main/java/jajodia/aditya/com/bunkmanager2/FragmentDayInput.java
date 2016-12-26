@@ -42,7 +42,6 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentDayInput extends Fragment {
 
-    InterstitialAd interstitialAd;
     Spinner spinner ;
     int day;
     View view;
@@ -71,35 +70,16 @@ public class FragmentDayInput extends Fragment {
         day = preferences.getInt("DAY",0);
         Log.d(TAG,"Day " +" "+day);
 
-        interstitialAd = new InterstitialAd(getActivity());
-        interstitialAd.setAdUnitId("ca-app-pub-3993264348115134/1188845600");//ca-app-pub-3993264348115134/1188845600
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
 
-                requesstNewInterstitial();
-                Intent i = new Intent(getActivity(), TotalInfo.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
-                NotificationReciever.makeNotifiaction(getActivity(), day);
-            }
-        });
-
-        requesstNewInterstitial();
 
         Cursor cursor = DatabaseOpenHelperTwo.readData(getActivity(), day);
         cursor.moveToFirst();
         if (period > 8) {
-            if(interstitialAd.isLoaded()){
-                interstitialAd.show();
-            }else {
                 Intent i = new Intent(getActivity(), TotalInfo.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 NotificationReciever.makeNotifiaction(getActivity(), day);
-            }
             } else {
             TextView tv_period = (TextView) view.findViewById(R.id.tv_period);
             tv_period.setText("Period" + " " + period);
@@ -176,19 +156,26 @@ public class FragmentDayInput extends Fragment {
                 @Override
                 public void onClick(View v) {
 
-                    periods[period-1] = 1;
-                    DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
-                    NotificationReciever.makeNotifiaction(getActivity(),day);
                     switch (rbint) {
 
-                        case 0:
+                        case 0: periods[period-1] = 1;
+                            DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
+                            NotificationReciever.makeNotifiaction(getActivity(),day);
+                            fragmentDayInput.setPeriod(period + 1);
+                            transaction.replace(R.id.frame_container, fragmentDayInput, null);
+                            transaction.commit();
                             Log.d(TAG, "came in attended");
                             if (finalStatus) {
                                 DatabaseOpenHelper.insertData(getActivity(), subject, 1, 1);
                             } else
                                 DatabaseOpenHelper.updateData(getActivity(), subject, finalTotal + 1, finalPresent + 1);
                             break;
-                        case 1:
+                        case 1: periods[period-1] = 1;
+                            DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
+                            NotificationReciever.makeNotifiaction(getActivity(),day);
+                            fragmentDayInput.setPeriod(period + 1);
+                            transaction.replace(R.id.frame_container, fragmentDayInput, null);
+                            transaction.commit();
                             Log.d(TAG, "came in bunked");
                             if (finalStatus) {
                                 DatabaseOpenHelper.insertData(getActivity(), subject, 1, 0);
@@ -196,10 +183,20 @@ public class FragmentDayInput extends Fragment {
                                 DatabaseOpenHelper.updateData(getActivity(), subject, finalTotal + 1, finalPresent);
                             }
                             break;
-                        case 2:
+                        case 2: periods[period-1] = 1;
+                            DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
+                            NotificationReciever.makeNotifiaction(getActivity(),day);
+                            fragmentDayInput.setPeriod(period + 1);
+                            transaction.replace(R.id.frame_container, fragmentDayInput, null);
+                            transaction.commit();
                             Log.d(TAG, "came in cancelled");
                             break;
-                        case 3:
+                        case 3: periods[period-1] = 1;
+                            DatabaseOpenHelperThree.upgradeData(getActivity(),day,periods[0],periods[1],periods[2],periods[3],periods[4],periods[5],periods[6],periods[7]);
+                            NotificationReciever.makeNotifiaction(getActivity(),day);
+                            fragmentDayInput.setPeriod(period + 1);
+                            transaction.replace(R.id.frame_container, fragmentDayInput, null);
+                            transaction.commit();
                             Log.d(TAG, "came in shifted");
 
 
@@ -216,11 +213,13 @@ public class FragmentDayInput extends Fragment {
                             }
                             break;
 
+                        default:
+                            Toast.makeText(getActivity(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+                            break;
+
                     }
 
-                    fragmentDayInput.setPeriod(period + 1);
-                    transaction.replace(R.id.frame_container, fragmentDayInput, null);
-                    transaction.commit();
+
 
                 }
             });
@@ -306,10 +305,7 @@ public class FragmentDayInput extends Fragment {
             }
         });
     }
-    public void requesstNewInterstitial(){
-        AdRequest adRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(adRequest);
-    }
+
 
 }
 
