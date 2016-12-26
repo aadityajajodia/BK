@@ -28,6 +28,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
@@ -38,6 +42,7 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentDayInput extends Fragment {
 
+    InterstitialAd interstitialAd;
     Spinner spinner ;
     int day;
     View view;
@@ -65,16 +70,37 @@ public class FragmentDayInput extends Fragment {
 
         day = preferences.getInt("DAY",0);
         Log.d(TAG,"Day " +" "+day);
-        Cursor cursor = DatabaseOpenHelperTwo.readData(getActivity(), day);
 
+        interstitialAd = new InterstitialAd(getActivity());
+        interstitialAd.setAdUnitId("ca-app-pub-3993264348115134/1188845600");//ca-app-pub-3993264348115134/1188845600
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+
+                requesstNewInterstitial();
+                Intent i = new Intent(getActivity(), TotalInfo.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                NotificationReciever.makeNotifiaction(getActivity(), day);
+            }
+        });
+
+        requesstNewInterstitial();
+
+        Cursor cursor = DatabaseOpenHelperTwo.readData(getActivity(), day);
         cursor.moveToFirst();
         if (period > 8) {
-           Intent i = new Intent(getActivity(),TotalInfo.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-            NotificationReciever.makeNotifiaction(getActivity(),day);
-        } else {
+            if(interstitialAd.isLoaded()){
+                interstitialAd.show();
+            }else {
+                Intent i = new Intent(getActivity(), TotalInfo.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                NotificationReciever.makeNotifiaction(getActivity(), day);
+            }
+            } else {
             TextView tv_period = (TextView) view.findViewById(R.id.tv_period);
             tv_period.setText("Period" + " " + period);
 
@@ -225,16 +251,16 @@ public class FragmentDayInput extends Fragment {
 
     }
 
-    public void onClicked(){
+    public void onClicked() {
 
 
-        final RadioButton shifted = (RadioButton)view.findViewById(R.id.rb_replaced);
+        final RadioButton shifted = (RadioButton) view.findViewById(R.id.rb_replaced);
 
         final RadioButton radioButtonAttended = (RadioButton) view.findViewById(R.id.rb_attended);
 
-        final RadioButton cancelled = ((RadioButton)view.findViewById(R.id.rb_cancelled));
+        final RadioButton cancelled = ((RadioButton) view.findViewById(R.id.rb_cancelled));
 
-        final RadioButton bunked = (RadioButton)view.findViewById(R.id.rb_bunked);
+        final RadioButton bunked = (RadioButton) view.findViewById(R.id.rb_bunked);
 
         shifted.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,7 +277,7 @@ public class FragmentDayInput extends Fragment {
         radioButtonAttended.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              spinner.setVisibility(View.INVISIBLE);
+                spinner.setVisibility(View.INVISIBLE);
                 shifted.setChecked(false);
                 rbint = 0;
 
@@ -259,10 +285,10 @@ public class FragmentDayInput extends Fragment {
             }
         });
 
-                cancelled.setOnClickListener(new View.OnClickListener() {
+        cancelled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               spinner.setVisibility(View.INVISIBLE);
+                spinner.setVisibility(View.INVISIBLE);
                 shifted.setChecked(false);
 
                 rbint = 2;
@@ -279,8 +305,11 @@ public class FragmentDayInput extends Fragment {
                 rbint = 1;
             }
         });
-
-
-
     }
+    public void requesstNewInterstitial(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitialAd.loadAd(adRequest);
+    }
+
 }
+

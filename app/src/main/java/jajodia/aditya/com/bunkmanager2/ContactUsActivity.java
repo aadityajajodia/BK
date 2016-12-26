@@ -6,7 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 public class ContactUsActivity extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +22,7 @@ public class ContactUsActivity extends Activity {
 
         actionBar.setTitle("CONTACT US");
 
+
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -25,7 +31,8 @@ public class ContactUsActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case android.R.id.home : onBackPressed();
+            case android.R.id.home :
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -33,4 +40,10 @@ public class ContactUsActivity extends Activity {
         }
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+         super.onBackPressed();
+        }
 }

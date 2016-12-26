@@ -106,6 +106,9 @@ public class DayInput extends FragmentActivity {
         adView.loadAd(adRequest);
     }
 
+
+
+
     }
 
 
