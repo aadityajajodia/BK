@@ -151,7 +151,7 @@ public class MainActivity extends FragmentActivity {
                                     }
                                 }
                                 Calendar calendar = Calendar.getInstance();
-                                int hr = Calendar.HOUR_OF_DAY;
+                                int hr = calendar.get(Calendar.HOUR_OF_DAY);
                                 int day = DayInput.setDate();
                                 if(hr>=21) {
                                     NotificationReciever.makeNotifiaction(MainActivity.this, day);

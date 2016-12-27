@@ -47,8 +47,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 
@@ -67,6 +69,7 @@ import java.util.Set;
 public class TotalInfo extends FragmentActivity {
 
 
+    InterstitialAd interstitialAd;
     public double minPerc=75.0;
     private static final String TAG = "TotalInfo";
     public static final String MY_PERC="MyPerc";
@@ -187,7 +190,22 @@ public class TotalInfo extends FragmentActivity {
             //     ActionBar actionBar = getSupportActionBar();
 
 
+            //showing interstitial add
 
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-3993264348115134/1188845600");//ca-app-pub-3993264348115134/1188845600
+        requesttNewInterstitial();
+        Intent intent4 = getIntent();
+        boolean sta = intent4.getBooleanExtra("ADD",false);
+        if(sta){
+            interstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    interstitialAd.show();
+
+                }
+            });
+        }
 
         Cursor cursor = DatabaseOpenHelperTwo.readData(this,2);
         if(cursor.getCount()<=0){
@@ -731,6 +749,11 @@ public static String[] getSubjects(){
 
         builder.create();
         builder.show();
+    }
+    public void requesttNewInterstitial(){
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        interstitialAd.loadAd(adRequest);
     }
 }
 

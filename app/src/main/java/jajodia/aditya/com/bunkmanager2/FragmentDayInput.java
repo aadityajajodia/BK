@@ -71,13 +71,13 @@ public class FragmentDayInput extends Fragment {
         Log.d(TAG,"Day " +" "+day);
 
 
-
         Cursor cursor = DatabaseOpenHelperTwo.readData(getActivity(), day);
         cursor.moveToFirst();
         if (period > 8) {
                 Intent i = new Intent(getActivity(), TotalInfo.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.putExtra("ADD",true);
                 startActivity(i);
                 NotificationReciever.makeNotifiaction(getActivity(), day);
             } else {
