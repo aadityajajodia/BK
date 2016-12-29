@@ -102,7 +102,7 @@ public class DayInput extends FragmentActivity {
 
     public void generateAdd(){
         MobileAds.initialize(getApplicationContext(),"ca-app-pub-4601836836916539~2310735402");
-
+        //
         AdView adView = (AdView)findViewById(R.id.ad_view_two);
         AdRequest adRequest;
         adRequest = new AdRequest.Builder().build();
