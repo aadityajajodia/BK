@@ -24,7 +24,7 @@ import java.util.Date;
 
 public class DayInput extends FragmentActivity {
 
-    InterstitialAd interstitialAd;
+
     public static final String FILE="FileTwo";
     TextView dayName , periodName , subjectName;
     Button done;
@@ -63,16 +63,7 @@ public class DayInput extends FragmentActivity {
                 transaction.replace(R.id.frame_container, fragmentDayInput, null);
                 transaction.commit();
 
-        interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-3993264348115134/1188845600");//ca-app-pub-3993264348115134/1188845600
-        requesttNewInterstitial();
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                interstitialAd.show();
 
-            }
-        });
 
 
         }
@@ -119,11 +110,7 @@ public class DayInput extends FragmentActivity {
     }
 
 
-    public void requesttNewInterstitial(){
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        interstitialAd.loadAd(adRequest);
-    }
+
 
     }
 
