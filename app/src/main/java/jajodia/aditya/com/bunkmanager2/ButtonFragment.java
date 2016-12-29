@@ -87,8 +87,15 @@ public class ButtonFragment extends Fragment {
                         if (present > total) {
                             Toast.makeText(getActivity(), "Present cannot be greater than total", Toast.LENGTH_SHORT).show();
                         } else {
-
-                            long t = DatabaseOpenHelper.insertData(getActivity(), subject, total, present);
+                            Cursor cursor =DatabaseOpenHelper.readData(getActivity(),subject);
+                            cursor.moveToFirst();
+                            long t=0;
+                            if(cursor.getCount()<=0) {
+                                t = DatabaseOpenHelper.insertData(getActivity(), subject, total, present);
+                            }
+                                else{
+                                 DatabaseOpenHelper.updateData(getActivity(),subject,total,present);
+                            }
                             Log.d(TAG, "value : " + t);
 
 

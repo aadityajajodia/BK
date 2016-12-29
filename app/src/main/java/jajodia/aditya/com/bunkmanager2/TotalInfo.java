@@ -319,18 +319,28 @@ public class TotalInfo extends FragmentActivity {
                                     fragmentTransaction.replace(R.id.frame_layout, fragment, null);
                                     fragmentTransaction.commit();
                                 } else {
-                                    boolean b = percentattendance(subjects[finalI]);
-                                    if (b)
-                                        btn[finalI].setTextColor(Color.RED);
-                                        else{
+
+                                    if (c.getInt(2) == 0) {
                                         btn[finalI].setTextColor(Color.WHITE);
+                                        ButtonFragment fragment = new ButtonFragment();
+                                        fragment.setSubject(subjects[finalI]);
+                                        //   Log.d(TAG,"button called"+" "+finalI);
+                                        fragmentTransaction.replace(R.id.frame_layout, fragment, null);
+                                        fragmentTransaction.commit();
+                                    } else {
+                                        boolean b = percentattendance(subjects[finalI]);
+                                        if (b)
+                                            btn[finalI].setTextColor(Color.RED);
+                                        else {
+                                            btn[finalI].setTextColor(Color.WHITE);
+                                        }
+                                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//
+                                        Log.d(TAG, "came in 2");
+                                        ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
+                                        fragmentTwo.setSubject(subjects[finalI]);
+                                        fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
+                                        fragmentTransaction.commit();
                                     }
-                                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//
-                                    Log.d(TAG, "came in 2");
-                                    ButtonFragmentTwo fragmentTwo = new ButtonFragmentTwo();
-                                    fragmentTwo.setSubject(subjects[finalI]);
-                                    fragmentTransaction.replace(R.id.frame_layout, fragmentTwo, null);
-                                    fragmentTransaction.commit();
                                 }
                                 c.close();
                                 return true;
@@ -509,14 +519,14 @@ public static String[] getSubjects(){
         final Cursor c = DatabaseOpenHelper.readData(TotalInfo.this,subjects[sub]);
         c.moveToFirst();
         if(c.getCount()>0) {
-            et_t.setHint(String.valueOf(c.getInt(2)));
-            et_p.setHint(String.valueOf(c.getInt(3)));
+            et_t.setText(String.valueOf(c.getInt(2)));
+            et_p.setText(String.valueOf(c.getInt(3)));
 
            // et_t.setHintTextColor(Color.parseColor("#000080"));
             //et_p.setHintTextColor(Color.parseColor("#000080"));
         }else {
-            et_t.setHint("0");
-            et_p.setHint("0");
+            et_t.setText("0");
+            et_p.setText("0");
         }
             builder.setPositiveButton("DONE", new DialogInterface.OnClickListener() {
             @Override
@@ -528,7 +538,10 @@ public static String[] getSubjects(){
                     int t = Integer.parseInt((et_t.getText().toString()));
                     int p = Integer.parseInt((et_p.getText().toString()));
                     if(t==0) {
-                        Toast.makeText(TotalInfo.this, "Total cannot be zero", Toast.LENGTH_SHORT).show();
+                        Cursor cursor = DatabaseOpenHelper.readData(TotalInfo.this,subjects[sub]);
+                        if(cursor.getCount()>0){
+                            DatabaseOpenHelper.updateData(TotalInfo.this,subjects[sub],0,0);
+                        }
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         ButtonFragment fragment = new ButtonFragment();
