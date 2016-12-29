@@ -399,6 +399,9 @@ public static String[] getSubjects(){
             int t = cursor.getInt(2);
             int p = cursor.getInt(3);
 
+            if(t==0)
+                return false;
+
             float att = ((float)p/t)*100;
 
             if(att>=minPerc)
