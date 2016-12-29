@@ -402,7 +402,7 @@ public static String[] getSubjects(){
             if(t==0)
                 return false;
 
-            float att = ((float)p/t)*100;
+            float att = ((float)p/t)*100;//
 
             if(att>=minPerc)
                 return false;
