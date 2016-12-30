@@ -1,7 +1,6 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 import android.animation.Animator;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,8 +20,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

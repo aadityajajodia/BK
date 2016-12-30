@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jajodia.aditya.com.bunkmanager2">
+    package="jajodia.aditya.com.tickernotify">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light">
         <activity
-            android:name=".MainActivity"
+            android:name="jajodia.aditya.com.tickernotify.MainActivity"
             android:screenOrientation="landscape"
             android:theme="@style/ThemeOne">
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TotalInfo"
+            android:name="jajodia.aditya.com.tickernotify.TotalInfo"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -31,26 +31,26 @@
         </activity>
 
         <receiver
-            android:name=".NotificationReciever"
+            android:name="jajodia.aditya.com.tickernotify.NotificationReciever"
             android:process=":remote" />
 
         <activity
-            android:name=".DayInput"
+            android:name="jajodia.aditya.com.tickernotify.DayInput"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ContactUsActivity"
+            android:name="jajodia.aditya.com.tickernotify.ContactUsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="jajodia.aditya.com.tickernotify.SettingsActivity"
             android:theme="@style/PreferenceScreen" />
         <activity
-            android:name=".InfoActivity"
+            android:name="jajodia.aditya.com.tickernotify.InfoActivity"
             android:screenOrientation="portrait"
             android:icon="@drawable/aditya"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ViewTimeTable"
+        <activity android:name="jajodia.aditya.com.tickernotify.ViewTimeTable"
             android:theme="@style/AppTheme"
             android:screenOrientation="landscape"></activity>
         <activity

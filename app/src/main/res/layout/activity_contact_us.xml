@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jajodia.aditya.com.bunkmanager2.ContactUsActivity">
+    tools:context="jajodia.aditya.com.tickernotify.ContactUsActivity">
 
     <TextView
         android:textColor="@color/color_chech_two"

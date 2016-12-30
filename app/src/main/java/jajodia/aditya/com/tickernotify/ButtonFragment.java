@@ -1,12 +1,9 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 import android.animation.Animator;
-import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,11 +15,8 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.xmlpull.v1.XmlPullParser;
 
 /**
  * Created by kunalsingh on 12/12/16.

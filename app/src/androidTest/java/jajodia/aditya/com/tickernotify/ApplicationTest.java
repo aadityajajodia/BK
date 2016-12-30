@@ -1,4 +1,4 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 import org.junit.Test;
 

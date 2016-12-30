@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "972407429053",
-    "firebase_url": "https://attendanceman-8ceb3.firebaseio.com",
-    "project_id": "attendanceman-8ceb3",
-    "storage_bucket": "attendanceman-8ceb3.appspot.com"
+    "project_number": "506582818449",
+    "firebase_url": "https://ticker-d5222.firebaseio.com",
+    "project_id": "ticker-d5222",
+    "storage_bucket": "ticker-d5222.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:972407429053:android:57fd1d56e08c167d",
+        "mobilesdk_app_id": "1:506582818449:android:57fd1d56e08c167d",
         "android_client_info": {
           "package_name": "jajodia.aditya.com.bunkmanager2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "972407429053-0qsjkjob0f22suoaoojnjbm38d8m2s9m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "jajodia.aditya.com.bunkmanager2",
-            "certificate_hash": "1590EA528333293D0A1E972E02DAF70613A45167"
-          }
-        },
-        {
-          "client_id": "972407429053-nt0f4ua09fc8gn0vojq041ilcvojkngv.apps.googleusercontent.com",
+          "client_id": "506582818449-cr5mmrek892u3rurcm55k4lio001l7tg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD_ME2T5QfiRb1PwK1Lp8iRrgLm6cA9FIU"
+          "current_key": "AIzaSyBEgoc5OpCXEa9NQtDe3q9v-LvIxTUCe68"
         }
       ],
       "services": {
@@ -37,13 +29,39 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "972407429053-nt0f4ua09fc8gn0vojq041ilcvojkngv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506582818449:android:058ee93c12bcdfc8",
+        "android_client_info": {
+          "package_name": "jajodia.aditya.com.tickernotify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506582818449-cr5mmrek892u3rurcm55k4lio001l7tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEgoc5OpCXEa9NQtDe3q9v-LvIxTUCe68"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

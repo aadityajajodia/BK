@@ -13,7 +13,7 @@
     android:layout_alignParentTop="true"
     android:background="@color/white"
     android:gravity="center_horizontal"
-    tools:context="jajodia.aditya.com.bunkmanager2.TotalInfo">
+    tools:context="jajodia.aditya.com.tickernotify.TotalInfo">
 
 
     <FrameLayout

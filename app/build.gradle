@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "jajodia.aditya.com.bunkmanager2"
+        applicationId "jajodia.aditya.com.tickernotify"
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 1

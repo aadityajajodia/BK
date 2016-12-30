@@ -1,15 +1,13 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.app.NotificationCompat;
-import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.util.Log;
 
 import java.util.Calendar;

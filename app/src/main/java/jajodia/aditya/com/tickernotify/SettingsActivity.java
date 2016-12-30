@@ -1,12 +1,7 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
-import android.util.Log;
-import android.widget.TimePicker;
 
 /**
  * Created by kunalsingh on 22/12/16.

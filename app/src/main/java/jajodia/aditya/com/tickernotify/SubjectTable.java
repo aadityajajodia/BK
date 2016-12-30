@@ -1,4 +1,4 @@
-package jajodia.aditya.com.bunkmanager2;
+package jajodia.aditya.com.tickernotify;
 
 /**
  * Created by kunalsingh on 13/12/16.
