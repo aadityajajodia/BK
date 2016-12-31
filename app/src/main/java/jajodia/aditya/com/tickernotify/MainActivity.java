@@ -125,7 +125,7 @@ public class MainActivity extends FragmentActivity {
 
                                  setAlarm(21, 00, 00);
 
-                                //setAlarmTwo(23,00,00);
+                                //setAlarmTwo(23,00,00);//
 
 
 
