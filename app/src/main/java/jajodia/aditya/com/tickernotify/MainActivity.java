@@ -2,14 +2,17 @@ package jajodia.aditya.com.tickernotify;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.speech.RecognizerIntent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.InputType;
@@ -120,7 +123,10 @@ public class MainActivity extends FragmentActivity {
                                 editor.putInt("Size", size);
                                 editor.commit();
 
-                                setAlarm(21, 00, 00);
+                                 setAlarm(21, 00, 00);
+
+                                //setAlarmTwo(23,00,00);
+
 
 
 
@@ -353,12 +359,10 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-    public void setAlarm(int hr , int min , int sec) {
-
+    public void setAlarm(int hr, int min, int sec) {
 
         Log.d(TAG,"came in alarm");
         Calendar calendar = Calendar.getInstance();
-
         calendar.set(Calendar.HOUR_OF_DAY,hr);
         calendar.set(Calendar.MINUTE,min);
         calendar.set(Calendar.SECOND,sec);
@@ -370,6 +374,23 @@ public class MainActivity extends FragmentActivity {
 
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
     }
+
+    public void setAlarmTwo(int hr,int min,int sec){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,hr);
+        calendar.set(Calendar.MINUTE,min);
+        calendar.set(Calendar.SECOND,sec);
+        Intent intent4 = new Intent(getApplicationContext(),NotificationReciever.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),70,intent4,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_FIFTEEN_MINUTES,pendingIntent);
+
+    }
+
 
 public  void displaySpeechRecognizer(){
     Intent intent  =  new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);

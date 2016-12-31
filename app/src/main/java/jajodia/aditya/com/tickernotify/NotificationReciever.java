@@ -53,7 +53,7 @@ public class NotificationReciever extends BroadcastReceiver {
                     makeNotifiaction(context, day);
 
                 }
-            }
+           }
         }else{
 
             for(int i=0;i<8;i++){
