@@ -37,7 +37,7 @@ public class NotificationReciever extends BroadcastReceiver {
             Calendar calendar = Calendar.getInstance();
             int hr = calendar.get(Calendar.HOUR_OF_DAY);
 
-           // if(hr>=21) {
+            if(hr>=21) {
 
                 Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
 
@@ -54,7 +54,7 @@ public class NotificationReciever extends BroadcastReceiver {
 
                     makeNotifiaction(context, day);
 
-                //}
+                }
            }
         }else{
 
