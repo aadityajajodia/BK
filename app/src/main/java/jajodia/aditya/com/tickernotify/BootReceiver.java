@@ -19,7 +19,7 @@ public class BootReceiver extends BroadcastReceiver {
 
         Log.d(TAG,"came in on Receive"+" "+intent.getAction());
         if(intent.getAction().equals("android.intent.action.BOOT_COMPLETED")||intent.getAction().equals("android.intent.action.QUICKBOOT_POWERON")){
-            Toast.makeText(context, "Came", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, "Came", Toast.LENGTH_SHORT).show();
             Log.d(TAG,"came in if");
             Intent intent1 = new Intent(context,BootService.class);
             context.startService(intent1);

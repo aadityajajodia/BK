@@ -51,6 +51,8 @@ public class MainActivity extends FragmentActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
+
+
         //finish();
 
     }
@@ -123,7 +125,7 @@ public class MainActivity extends FragmentActivity {
                                 editor.putInt("Size", size);
                                 editor.commit();
 
-                                 setAlarm(21, 00, 00);
+                                 setAlarm(15, 42, 00);
 
                                 //setAlarmTwo(23,00,00);//
 
@@ -148,9 +150,9 @@ public class MainActivity extends FragmentActivity {
                                 Calendar calendar = Calendar.getInstance();
                                 int hr = calendar.get(Calendar.HOUR_OF_DAY);
                                 int day = DayInput.setDate();
-                                if(hr>=21) {
+                               // if(hr>=21) {
                                     NotificationReciever.makeNotifiaction(MainActivity.this, day);
-                                }
+                                //}
                                 Intent in = new Intent(MainActivity.this, TotalInfo.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

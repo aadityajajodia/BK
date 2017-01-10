@@ -616,7 +616,7 @@ public static String[] getSubjects(){
                         editor.commit();
                     }
                 }
-                //Toast.makeText(TotalInfo.this, "Minimun Percentage is set to" + " " + minPerc+"%", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TotalInfo.this, "Minimun Percentage is set to" + " " + minPerc+"%", Toast.LENGTH_SHORT).show();
 
                 
 

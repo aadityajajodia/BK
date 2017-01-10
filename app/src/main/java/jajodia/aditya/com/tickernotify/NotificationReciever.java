@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
@@ -35,7 +37,7 @@ public class NotificationReciever extends BroadcastReceiver {
             Calendar calendar = Calendar.getInstance();
             int hr = calendar.get(Calendar.HOUR_OF_DAY);
 
-            if(hr>=21) {
+           // if(hr>=21) {
 
                 Cursor cursor = DatabaseOpenHelperTwo.readData(context, day);
 
@@ -52,7 +54,7 @@ public class NotificationReciever extends BroadcastReceiver {
 
                     makeNotifiaction(context, day);
 
-                }
+                //}
            }
         }else{
 
@@ -93,12 +95,17 @@ public class NotificationReciever extends BroadcastReceiver {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 50, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder;
+        long [] vibrate = {500,500};
         builder = new NotificationCompat.Builder(context);
         builder.setContentIntent(pendingIntent);
+        builder.setLights(Color.parseColor("#03a9f4"),1000,3000);
+        builder.setVibrate(vibrate);
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setColor(Color.parseColor("#03a9f4"));
         builder.setOngoing(true);
+        builder.setSound(alarmSound);
         builder.setContentTitle("Mark Today's Attendance");
 
         if (day != 7) {
